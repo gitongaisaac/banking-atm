@@ -31,6 +31,10 @@ public class DbConnection {
         }
     }
 
+    public static void logIn() {
+        
+    }
+
     public static void main(String[] args) {
         dbConnection();
     }
