@@ -3,8 +3,8 @@ package org.db_banking;
 // JDBC Packages import
 import  java.sql.*;
 
-/* MySQL Database connection class. Has method dbConnection() */
-public class DbConnection {
+/* MySQL Database connection abstract class. Has method dbConnection() */
+abstract class DbConnection {
 
     /* This method takes in an SQL query parameter and returns the queried as result.
      * Produces one row and one column. */

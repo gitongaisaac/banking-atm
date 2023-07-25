@@ -2,14 +2,15 @@ package org.atm_banking;
 
 /* Import packages */
 import java.util.Scanner;
+import org.db_banking.DbAccessor;
 
 /* This class takes care of user validation to ensure that users only access accounts to which they have access to.
  * Has 2 methods. activity() and signIn()  */
-public class SignIn {
+class SignIn extends DbAccessor {
 
     /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
      * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
-    public static void activity(){
+    public static void activity() {
 
         String activity = "Which account do you want to access"
                 + "\n1. Check balance"
@@ -25,7 +26,6 @@ public class SignIn {
     /* This method takes care of the actual validation. It allows the user to enter their account number and the pin and
      * the system validates these credentials. If the credentials are correct. The user can access the account */
     public static void signIn() {
-
         int cardNo = 9804;
         int pinNo = 9804;
         Scanner scanner = new Scanner (System.in);
@@ -55,5 +55,14 @@ public class SignIn {
         else
             activity();
 
+    }
+
+    public static void main(String[] args) {
+        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509'";
+
+        SignIn signIn = new SignIn();
+        String result = signIn.dbAccessor(query);
+
+        System.out.println(result);
     }
 }
