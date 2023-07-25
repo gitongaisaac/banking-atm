@@ -1,17 +1,23 @@
-package org.gBanking;
+package db_banking;
 
+// JDBC Packages import
 import  java.sql.*;
 
 public class DbConnection {
 
     public static void dbConnection() {
-        String url = "jdbc:mysql://127.0.0.1:3306/atm_banking";
-        String username = "isaac";
-        String password = "D3F 15@@c 53rv3r";
+        /* Java Database Connection Driver Registration */
+        final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
+
+        /* Connection Instances */
+        final String url = "jdbc:mysql://127.0.0.1:3306/atm_banking";
+        final String username = "isaac";
+        final String password = "D3F 15@@c 53rv3r";
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(jdbcDriver);
 
+            /* Connection to Database */
             Connection connection = DriverManager.getConnection(url, username, password);
 
             Statement statement = connection.createStatement();
@@ -31,9 +37,7 @@ public class DbConnection {
         }
     }
 
-    public static void logIn() {
-        
-    }
+    public static void login() {}
 
     public static void main(String[] args) {
         dbConnection();
