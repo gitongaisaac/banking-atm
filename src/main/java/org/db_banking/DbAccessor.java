@@ -7,7 +7,7 @@ public class DbAccessor extends DbConnection {
     public String dbAccessor(String query) {
         DbAccessor dbAccessor = new DbAccessor();
 
-        return dbAccessor.dbConnection(query);
+        return dbAccessor.dbStringConnection(query);
     }
 
 //    public static void main(String[] args) {
