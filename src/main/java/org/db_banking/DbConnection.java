@@ -57,8 +57,8 @@ public class DbConnection {
 //        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509'";
 //
 //        /* Class object */
-//        DbConnection dbConnection = new DbConnection();
-//        String result = dbConnection.dbConnection(query);
+////        DbConnection dbConnection = new DbConnection();
+////        String result = dbConnection.dbConnection(query);
 //
 //
 //        System.out.println(result);
