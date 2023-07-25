@@ -23,6 +23,7 @@ class SignIn extends DbAccessor {
         System.out.println(activity);
     }
 
+    /* *********************************************************************************************************** */
     /* This method takes care of the actual validation. It allows the user to enter their account number and the pin and
      * the system validates these credentials. If the credentials are correct. The user can access the account */
     public static void signIn() {
@@ -57,12 +58,13 @@ class SignIn extends DbAccessor {
 
     }
 
+    /* *********************************************************************************************************** */
     public static void main(String[] args) {
         String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509'";
 
         SignIn signIn = new SignIn();
-        String result = signIn.dbAccessor(query);
+//        String result = signIn.dbStringAccessor(query);
 
-        System.out.println(result);
+//        System.out.println(result);
     }
 }

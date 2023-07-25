@@ -19,9 +19,12 @@ abstract class DbConnection {
     /* Database connection password */
     private final String password = "D3F 15@@c 53rv3r";
 
+    /* *********************************************************************************************************** */
     Connection connection;
     Statement statement;
     ResultSet resultSet;
+
+    /* *********************************************************************************************************** */
 
     /* This method takes in an SQL query parameter and returns the STRING queried as result. Only returns Strings
      * Produces one row and one column. */
@@ -59,6 +62,8 @@ abstract class DbConnection {
 
     }
 
+    /* *********************************************************************************************************** */
+    /* Integer return type connection */
     protected int dbIntegerConnection(String query) {
         int result = 0;
 
@@ -86,6 +91,8 @@ abstract class DbConnection {
         return result;
     }
 
+    /* *********************************************************************************************************** */
+    /* Double return type connection */
     protected double dbDoubleConnection(String query) {
         double result = 0;
 
@@ -101,6 +108,11 @@ abstract class DbConnection {
             while (resultSet.next()) {
                 result = resultSet.getDouble(1);
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e) {
             System.out.println("Sorry! An error occurred");
         }
@@ -108,15 +120,14 @@ abstract class DbConnection {
         return result;
     }
 
+    /* *********************************************************************************************************** */
+    /* Date String return type connection */
     protected String dbDateConnection(String query) {
-        /* Connection query result initialization */
         String result = null;
 
         try {
-            /* Java Database Connection Driver Registration */
             Class.forName(this.jdbcDriver);
 
-            /* Connection to Database */
             connection = DriverManager.getConnection(this.url, this.username, this.password);
 
             statement = connection.createStatement();
@@ -127,21 +138,20 @@ abstract class DbConnection {
                 result = String.valueOf(resultSet.getDate(1));
             }
 
-            /* Close database connection */
             connection.close();
             statement.close();
             resultSet.close();
 
-            /* Catch any errors during the connection */
         } catch (Exception e) {
             System.out.println("Sorry! An error occurred");
         }
 
-        /* Returns the queried result */
         return result;
 
     }
 
+    /* *********************************************************************************************************** */
+    /* Time String return type connection */
     protected String dbTimeConnection(String query) {
         String result = null;
 
@@ -157,6 +167,11 @@ abstract class DbConnection {
             while (resultSet.next()) {
                 result = String.valueOf(resultSet.getTime(1));
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e) {
             System.out.println("Sorry! An error occurred");
         }
@@ -164,14 +179,4 @@ abstract class DbConnection {
         return result;
     }
 
-//    public static void main(String[] args) {
-//        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509'";
-//
-//        /* Class object */
-////        DbConnection dbConnection = new DbConnection();
-////        String result = dbConnection.dbConnection(query);
-//
-//
-//        System.out.println(result);
-//    }
 }

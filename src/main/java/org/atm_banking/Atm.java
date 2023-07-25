@@ -52,6 +52,7 @@ public class Atm {
 //        while (i < 1);
 //    }
 
+    /* *********************************************************************************************************** */
     public static void main(String[] args) {
         SignIn.signIn();
         switchActivity();
