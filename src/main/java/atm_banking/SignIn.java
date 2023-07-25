@@ -2,10 +2,13 @@ package atm_banking;
 
 import java.util.Scanner;
 
+/*  */
 public class SignIn {
 
+    /* This method prompts the user to enter the activity they want to perform */
     public static void activity(){
 
+        /*  */
         String activity = "Which account do you want to access"
                 + "\n1. Check balance"
                 + "\n2. Deposit "

@@ -3,9 +3,16 @@ package db_banking;
 // JDBC Packages import
 import  java.sql.*;
 
+/* MySQL Database connection class. Has method dbConnection*/
 public class DbConnection {
 
-    public void dbConnection(String query) {
+    /* This method takes in an SQL query parameter and returns the queried as result.
+     * Produces one row and one column. */
+    public String dbConnection(String query) {
+
+        /* Connection query result initialization */
+        String result = null;
+
         try {
             final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
 
@@ -25,24 +32,35 @@ public class DbConnection {
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                String result = resultSet.getString(1);
+                result = resultSet.getString(1);
 
-                System.out.println(result);
+//                System.out.println(result);
             }
 
+
+            /* Close database connection */
             connection.close();
             statement.close();
             resultSet.close();
 
+            /* Catch any errors during the connection */
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        /* Returns the queried result */
+        return result;
+
     }
 
-    public static void main(String[] args) {
-        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509' OR SSN = '105-27-2358'";
-
-        DbConnection dbConnection = new DbConnection();
-       dbConnection.dbConnection(query);
-    }
+//    public static void main(String[] args) {
+//        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509'";
+//
+//        /* Class object */
+//        DbConnection dbConnection = new DbConnection();
+//        String result = dbConnection.dbConnection(query);
+//
+//
+//        System.out.println(result);
+//    }
 }

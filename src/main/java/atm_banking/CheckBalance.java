@@ -6,7 +6,7 @@ public class CheckBalance {
 
         System.out.println("Your account balance is 50,000");
         SignIn.activity();
-        Atm.switchClass();
+        Atm.switchActivity();
     }
 
 }

@@ -15,7 +15,7 @@ public class Withdraw {
         System.out.println("Your account balance is: " + totalAmount);
 
         SignIn.activity();
-        Atm.switchClass();
+        Atm.switchActivity();
         return totalAmount;
     }
 
