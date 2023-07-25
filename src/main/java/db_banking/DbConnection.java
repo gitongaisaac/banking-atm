@@ -5,16 +5,16 @@ import  java.sql.*;
 
 public class DbConnection {
 
-    public static void dbConnection() {
-        /* Java Database Connection Driver Registration */
-        final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-
-        /* Connection Instances */
-        final String url = "jdbc:mysql://127.0.0.1:3306/atm_banking";
-        final String username = "isaac";
-        final String password = "D3F 15@@c 53rv3r";
-
+    public void dbConnection(String query) {
         try {
+            final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
+
+            /* Connection Requirements */
+            final String url = "jdbc:mysql://127.0.0.1:3306/atm_banking";
+            final String username = "isaac";
+            final String password = "D3F 15@@c 53rv3r";
+
+            /* Java Database Connection Driver Registration */
             Class.forName(jdbcDriver);
 
             /* Connection to Database */
@@ -22,24 +22,27 @@ public class DbConnection {
 
             Statement statement = connection.createStatement();
 
-            ResultSet resultSet = statement.executeQuery("SELECT SSN, last_name, first_name, email_address, state FROM Person_info");
+            ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getString(1) + "    **********    " + resultSet.getString(2) +
-                        "    *********     " + resultSet.getString(3) + "    *********    " + resultSet.getString(4) +
-                        "    *********     " + resultSet.getString(5));
+                String result = resultSet.getString(1);
+
+                System.out.println(result);
             }
 
             connection.close();
+            statement.close();
+            resultSet.close();
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public static void login() {}
-
     public static void main(String[] args) {
-        dbConnection();
+        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509' OR SSN = '105-27-2358'";
+
+        DbConnection dbConnection = new DbConnection();
+       dbConnection.dbConnection(query);
     }
 }
