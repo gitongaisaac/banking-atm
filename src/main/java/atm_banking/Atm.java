@@ -1,4 +1,4 @@
-package org.gBanking;
+package atm_banking;
 
 import java.util.Scanner;
 
