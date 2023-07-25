@@ -1,9 +1,11 @@
-package atm_banking;
+package org.atm_banking;
 
 import java.util.Scanner;
 
+/* Deposit class. Takes care of transactions concerning depositing of cash. Has one method deposit() */
 public class Deposit {
 
+    /* Total amount in the account */
     int amountInTheAccount = 50000;
 
     public static int deposit(int amountInTheAccount){

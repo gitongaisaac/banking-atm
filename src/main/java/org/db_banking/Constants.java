@@ -1,4 +1,4 @@
-package db_banking;
+package org.db_banking;
 
 public class Constants {
 }

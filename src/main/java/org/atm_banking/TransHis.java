@@ -1,4 +1,4 @@
-package atm_banking;
+package org.atm_banking;
 
 public class TransHis {
 

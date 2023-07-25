@@ -1,14 +1,14 @@
-package atm_banking;
+package org.atm_banking;
 
 /* Import packages */
 import java.util.Scanner;
 
-/* This is the main class and contains the main method. Has only one method: switchActivity and the main method */
+/* This is the main class and contains the main method. Has only one method: switchActivity() and the main method */
 public class Atm {
 
     /* Directs the user to which activity they want to perform by switching the different classes containing the various
-     * banking activity i.e. CheckBalance for checking balance, Deposit For depositing cash, withdraw for withdrawing  cash
-     * Transfer for transferring funds and Transaction history. */
+     * banking activity i.e. checkBalance() for checking balance, deposit() For depositing cash, withdraw() for withdrawing  cash
+     * transfer() for transferring funds and transHIs() (Transaction history). */
     public static void switchActivity() {
 
         System.out.print("Account: ");
