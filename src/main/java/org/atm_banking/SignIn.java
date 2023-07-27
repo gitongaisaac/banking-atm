@@ -27,7 +27,7 @@ class SignIn extends DbAccessor {
     /* This method takes care of the actual validation. It allows the user to enter their account number and the pin and
      * the system validates these credentials. If the credentials are correct. The user can access the account */
     public static void signIn() {
-        int cardNo = 9804;
+        int accountNo = 9804;
         int pinNo = 9804;
         Scanner scanner = new Scanner (System.in);
 
@@ -35,13 +35,18 @@ class SignIn extends DbAccessor {
         System.out.print("Account Number: ");
         int enteredNo = scanner.nextInt();
 
+        String query = "SELECT account_pin FROM Account_info WHERE account_no = enteredNo";
+
+        SignIn signIn = new SignIn();
+        signIn.dbIntegerAccessor(query);
+
         // PIn
         System.out.print("Pin number: ");
         int enteredPin = scanner.nextInt();
 
         /* Validation. Checks if the Account Number entered corresponds to the pin. It gives the user 3 chances to enter
          * the credentials */
-        if (enteredNo != cardNo & enteredPin != pinNo) {
+        if (enteredNo != accountNo & enteredPin != pinNo) {
             for (int i = 1; i < 3; i++ ) {
                 System.out.println("The details do not match");
 
@@ -60,11 +65,12 @@ class SignIn extends DbAccessor {
 
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
-        String query = "SELECT last_name FROM Person_info WHERE SSN = '096-43-2509'";
+        String SSN = "096-43-2509";
+        String query = "SELECT last_name FROM Person_info WHERE SSN = SSN";
 
         SignIn signIn = new SignIn();
-//        String result = signIn.dbStringAccessor(query);
+        String result = signIn.dbStringAccessor(query);
 
-//        System.out.println(result);
+        System.out.println(result);
     }
 }
