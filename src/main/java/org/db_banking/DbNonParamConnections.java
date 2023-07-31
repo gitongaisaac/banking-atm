@@ -4,7 +4,7 @@ package org.db_banking;
 import  java.sql.*;
 
 /* MySQL Database connection abstract class. Has method dbConnection() */
-abstract class DbConnection {
+abstract class DbNonParamConnections {
 
     /* JDBC MySQL Driver*/
     private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";

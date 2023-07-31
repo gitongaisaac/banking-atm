@@ -1,43 +1,43 @@
 package org.db_banking;
 
-/* Public class DbAccessor. To access the DbConnection abstract class. Since the DbConnection class is not accessible
- * out of this package, this class inherits from the DbConnection class and makes the functionalities of the class
+/* Public class DbNonParamAccessors. To access the DbNonParamConnections abstract class. Since the DbNonParamConnections class is not accessible
+ * out of this package, this class inherits from the DbNonParamConnections class and makes the functionalities of the class
  * public to other packages */
-public class DbAccessor extends DbConnection {
+public class DbNonParamAccessors extends DbNonParamConnections {
 
     /* *********************************************************************************************************** */
     /* dbIntegerConnection Accessor */
     public int dbIntegerAccessor(String query) {
         /* Class object */
-        DbAccessor dbAccessor = new DbAccessor();
+        DbNonParamAccessors dbAccessor = new DbNonParamAccessors();
         return  dbAccessor.dbIntegerConnection(query);
     }
 
     /* *********************************************************************************************************** */
     /* dbDoubleConnection Accessor */
     public double dbDoubleAccessor(String query) {
-        DbAccessor dbAccessor = new DbAccessor();
+        DbNonParamAccessors dbAccessor = new DbNonParamAccessors();
         return dbAccessor.dbDoubleConnection(query);
     }
 
     /* *********************************************************************************************************** */
     /* dbStringConnection Accessor */
     public String dbStringAccessor(String query) {
-        DbAccessor dbAccessor = new DbAccessor();
+        DbNonParamAccessors dbAccessor = new DbNonParamAccessors();
         return dbAccessor.dbStringConnection(query);
     }
 
     /* *********************************************************************************************************** */
     /* dbDateConnection Accessor */
     public String dbDateAccessor(String query) {
-        DbAccessor dbAccessor = new DbAccessor();
+        DbNonParamAccessors dbAccessor = new DbNonParamAccessors();
         return dbAccessor.dbDateConnection(query);
     }
 
     /* *********************************************************************************************************** */
     /* dbTimeConnection Accessor */
     public String dbTimeAccessor(String query) {
-        DbAccessor dbAccessor = new DbAccessor();
+        DbNonParamAccessors dbAccessor = new DbNonParamAccessors();
         return dbAccessor.dbTimeConnection(query);
     }
 
@@ -49,7 +49,7 @@ public class DbAccessor extends DbConnection {
 //        String query4 = "SELECT date_of_birth FROM Person_info WHERE SSN = '096-43-2509'";
 //        String query5 = "SELECT trans_time FROM Trans_info WHERE REF = '08OPQ7R7'";
 //
-//        DbAccessor dbAccessor = new DbAccessor();
+//        DbNonParamAccessors dbAccessor = new DbNonParamAccessors();
 //
 //        int result1 = dbAccessor.dbIntegerAccessor(query1);
 //        double result2 = dbAccessor.dbDoubleAccessor(query2);

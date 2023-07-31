@@ -2,11 +2,11 @@ package org.atm_banking;
 
 /* Import packages */
 import java.util.Scanner;
-import org.db_banking.DbAccessor;
+import org.db_banking.DbNonParamAccessors;
 
 /* This class takes care of user validation to ensure that users only access accounts to which they have access to.
  * Has 2 methods. activity() and signIn()  */
-class SignIn extends DbAccessor {
+class SignIn extends DbNonParamAccessors {
 
     /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
      * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
