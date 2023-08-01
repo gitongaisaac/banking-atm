@@ -1,6 +1,8 @@
 package org.atm_banking;
 
-public class FetchUserDetails extends SignIn {
+import org.db_banking.DbParamAccessors;
+
+abstract class FetchUserDetails extends DbParamAccessors {
     int account_no;
 
     double total_balance = 0;
@@ -10,30 +12,41 @@ public class FetchUserDetails extends SignIn {
     String account_type = null;
 
     public FetchUserDetails() {
-        FetchUserDetails fetchDetails = new FetchUserDetails();
-        account_no = fetchDetails.account_no;
-        System.out.println("Constructor");
-        System.out.println(account_no);
+        SignIn signIn = new SignIn();
+        this.account_no = signIn.account_no;
     }
 
-    protected double getTotalBalance(int account_no) {
-        FetchUserDetails fetchDetails = new FetchUserDetails();
-        account_no = fetchDetails.account_no;
-        return 0;
+    protected double getTotalBalance() {
+        String query = "SELECT total_balance FROM Account_info WHERE account_no = ?";
+        int condition = this.account_no;
+        String label = "total_balance";
+
+        DbParamAccessors dbParamAccessors = new DbParamAccessors();
+        this.total_balance = dbParamAccessors.dbDoubleAccessor(query, condition, label);
+
+        return this.total_balance;
     }
 
-    protected  String getSSN(int account_no) {
+    protected  String getSSN() {
+        String query = "SELECT SSN FROM Account_info WHERE account_no = ?";
+        int condition = this.account_no;
+        String label = "SSN";
+
+        DbParamAccessors dbParamAccessors = new DbParamAccessors();
+        this.ssn = dbParamAccessors.dbStringAccessor(query, condition, label);
 
         return null;
     }
 
-    protected String account_type(int account_no) {
+    protected String account_type() {
+
+
 
         return null;
     }
 
     public static void main(String[] args) {
-        FetchUserDetails fetchUserDetails = new FetchUserDetails();
+
     }
 
 }
