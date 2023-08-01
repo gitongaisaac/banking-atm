@@ -11,7 +11,7 @@ public class Atm {
      * transfer() for transferring funds and transHIs() (Transaction history). */
     public static void switchActivity() {
 
-        System.out.print("Account: ");
+        System.out.print("\nAccount: ");
 
         /* Accepts input from the user */
         Scanner scanner = new Scanner(System.in);
@@ -54,7 +54,8 @@ public class Atm {
 
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
-        SignIn.signIn();
+        SignIn signIn = new SignIn();
+        signIn.signIn();
         switchActivity();
 
     }

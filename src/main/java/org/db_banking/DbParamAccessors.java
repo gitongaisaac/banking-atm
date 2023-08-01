@@ -27,15 +27,15 @@ public class DbParamAccessors extends DbParamConnections {
         return accessor.dbTimeConnection(query, condition, label);
     }
 
-    public static void main(String[] args) {
-        String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
-        String label = "account_pin";
-        int condition = 123456789;
-
-        DbParamAccessors accessor = new DbParamAccessors();
-        int result = accessor.dbIntAccessor(query, condition, label);
-
-        System.out.println(result);
-    }
+//    public static void main(String[] args) {
+//        String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
+//        String label = "account_pin";
+//        int condition = 12345678;
+//
+//        DbParamAccessors accessor = new DbParamAccessors();
+//        int result = accessor.dbIntAccessor(query, condition, label);
+//
+//        System.out.println(result);
+//    }
 
 }
