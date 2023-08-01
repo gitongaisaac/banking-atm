@@ -145,4 +145,27 @@ abstract class DbParamConnections {
         return result;
     }
 
+    protected String dbStringIConnection(String query, int condition, String label) {
+        String result = null;
+
+        try {
+            Class.forName(this.jdbcDriver);
+
+            connection = DriverManager.getConnection(this.url, this.username, this.password);
+
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, condition);
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                result = String.valueOf(resultSet.getString(label));
+            }
+        } catch (Exception e ) {
+            System.out.println(e);
+        }
+
+        return result;
+    }
+
 }

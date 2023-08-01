@@ -2,7 +2,7 @@ package org.db_banking;
 
 public class DbParamAccessors extends DbParamConnections {
 
-    public int dbIntAccessor(String query, int condition, String label) {
+    public int dbIntegerAccessor(String query, int condition, String label) {
         DbParamAccessors accessor = new DbParamAccessors();
         return accessor.dbIntConnection(query, condition, label);
     }
@@ -25,6 +25,11 @@ public class DbParamAccessors extends DbParamConnections {
     public String dbTimeAccessor(String query, String condition, String label) {
         DbParamAccessors accessor = new DbParamAccessors();
         return accessor.dbTimeConnection(query, condition, label);
+    }
+
+    public String dbStringIAccessor(String query, int condition, String label) {
+        DbParamAccessors accessor = new DbParamAccessors();
+        return accessor.dbStringIConnection(query, condition, label);
     }
 
 //    public static void main(String[] args) {

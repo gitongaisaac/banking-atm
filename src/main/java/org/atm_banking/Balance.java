@@ -1,7 +1,7 @@
 package org.atm_banking;
 
 /* Check balance account. Has one method: balance() */
-public class CheckBalance {
+public class Balance {
 
     /* Displays the balance of the user */
     public static void balance(){

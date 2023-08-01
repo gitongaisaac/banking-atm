@@ -11,18 +11,18 @@ public class Atm {
      * transfer() for transferring funds and transHIs() (Transaction history). */
     public static void switchActivity() {
 
-        System.out.print("\nAccount: ");
+        System.out.print("\nChoice: ");
 
         /* Accepts input from the user */
         Scanner scanner = new Scanner(System.in);
         int switchActivity = scanner.nextInt();
 
         /* A switch claus for switching between the different class methods according to the input entered by the user
-        *  1. CheckBalance          2. Deposit          3.Withdraw
+        *  1. Balance          2. Deposit          3.Withdraw
         *  4. Transfer              5. Transaction History          6. Quit */
         switch (switchActivity) {
             case 1:
-                CheckBalance.balance();
+                Balance.balance();
                 break;
             case 2:
                 Deposit.deposit(50000);
