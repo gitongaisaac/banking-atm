@@ -46,14 +46,6 @@ public class Atm extends FetchDetails {
 
     }
 
-//    public static void loop() {
-//        int i = 0;
-//        do {
-//            Atm.switchClass();
-//        }
-//        while (i < 1);
-//    }
-
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
         SignIn signIn = new SignIn();

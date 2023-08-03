@@ -9,11 +9,12 @@ public class FetchDetails extends DbParamAccessors {
 
     String ssn, account_type, last_name, first_name, phone_no;
 
-//    public FetchDetails() {
+    public FetchDetails() {
 //        SignIn signIn = new SignIn();
 //        this.account_no = signIn.account_no;
-//        System.out.println("Account Number is: " + this.account_no + " from fetch details");
-//    }
+//        this.account_no = account_no;
+        System.out.println("Account Number is: " + this.account_no + " from fetch details");
+    }
 
     public int getAccountNo() {
         return this.account_no;
@@ -23,7 +24,7 @@ public class FetchDetails extends DbParamAccessors {
         this.account_no = account_no;
     }
 
-    public double getTotalBalance() {
+    public double fetchTotalBalance() {
         String query = "SELECT total_balance FROM Account_info WHERE account_no = ?";
         int condition = this.account_no;
         String label = "total_balance";
@@ -34,7 +35,7 @@ public class FetchDetails extends DbParamAccessors {
         return this.total_balance;
     }
 
-    public   String getSSN() {
+    public   String fetchSSN() {
         String query = "SELECT SSN FROM Account_info WHERE account_no = ?";
         int condition = this.account_no;
         String label = "SSN";
@@ -45,7 +46,7 @@ public class FetchDetails extends DbParamAccessors {
         return this.ssn;
     }
 
-    public String getAccountType() {
+    public String fetchAccountType() {
         String query = "SELECT account_type FROM Account_info WHERE account_no = ?";
         int condition = this.account_no;
         String label = "account_type";
@@ -57,11 +58,11 @@ public class FetchDetails extends DbParamAccessors {
         return this.account_type;
     }
 
-    public String getLastName() {
+    public String fetchLastName() {
         String query, condition, label;
 
         FetchDetails fetchDetails = new FetchDetails();
-        String ssn = fetchDetails.getSSN();
+        String ssn = fetchDetails.fetchSSN();
 
         query = "SELECT last_name FROM Person_info WHERE SSN = ?";
         condition = ssn;
@@ -73,11 +74,11 @@ public class FetchDetails extends DbParamAccessors {
         return this.last_name;
     }
 
-    public String getFirstName() {
+    public String fetchFirstName() {
         String query, condition, label;
 
         FetchDetails fetchDetails = new FetchDetails();
-        String ssn = fetchDetails.getSSN();
+        String ssn = fetchDetails.fetchSSN();
 
         query = "SELECT first_name FROM Person_info WHERE SSN = ?";
         condition = ssn;
@@ -89,7 +90,7 @@ public class FetchDetails extends DbParamAccessors {
         return this.first_name;
     }
 
-    public String getPhoneNo() {
+    public String fetchPhoneNo() {
         String query, condition, label;
 
         query = "SELECT phone_no FROM Person_info WHERE SSN = ?";
@@ -97,7 +98,7 @@ public class FetchDetails extends DbParamAccessors {
         label = "phone_no";
 
         FetchDetails fetchDetails = new FetchDetails();
-        String ssn = fetchDetails.getSSN();
+        String ssn = fetchDetails.fetchSSN();
 
         DbParamAccessors dbParamAccessors = new DbParamAccessors();
         this.phone_no = dbParamAccessors.dbStringAccessor(query, condition, label);
@@ -111,8 +112,9 @@ public class FetchDetails extends DbParamAccessors {
 //        System.out.println(account);
 //
 //        fetchDetails.setAccountNo(123456789);
+//        FetchDetails fetchDetails1 = new FetchDetails();
 //        int account2 = fetchDetails.getAccountNo();
-//        System.out.println(account2);
+//        System.out.println("From get account " + account2);
 //    }
 
 }
