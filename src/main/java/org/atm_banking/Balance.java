@@ -10,7 +10,7 @@ public class Balance extends FetchDetails {
         Balance balance = new Balance();
         double total_balance = balance.fetchTotalBalance();
 
-        System.out.println("Your account balance is " + total_balance);
+        System.out.println("Your account balance is $" + total_balance);
         SignIn.activity();
         Atm.switchActivity();
     }

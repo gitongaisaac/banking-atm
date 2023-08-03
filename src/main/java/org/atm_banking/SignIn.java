@@ -12,7 +12,27 @@ import org.db_banking.FetchDetails;
  * Has 2 methods. activity() and signIn()  */
 public class SignIn extends DbParamAccessors {
 
-    public int account_no = 123456789;
+    private int account_no;
+
+    private int fetchAccountPin() {
+        /* Fetch the account_pin which corresponds to the account_no entered. Uses the DbParamAccessors class to fetch. */
+        String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
+        int condition = this.account_no;
+        String label = "account_pin";
+
+        SignIn signIn = new SignIn();
+        int result = signIn.dbIntegerAccessor(query, condition, label);
+
+        return result;
+    }
+
+    public int getAccountNo() {
+        return this.account_no;
+    }
+
+     public void setAccountNo(int acc_no) {
+        this.account_no = acc_no;
+     }
 
     /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
      * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
@@ -28,18 +48,6 @@ public class SignIn extends DbParamAccessors {
                 + "\n6. Quit";
 
         System.out.println(activity);
-    }
-
-    public int fetchAccountPin() {
-        /* Fetch the account_pin which corresponds to the account_no entered. Uses the DbParamAccessors class to fetch. */
-        String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
-        int condition = this.account_no;
-        String label = "account_pin";
-
-        SignIn signIn = new SignIn();
-        int result = signIn.dbIntegerAccessor(query, condition, label);
-
-        return result;
     }
 
     /* *********************************************************************************************************** */
@@ -69,13 +77,15 @@ public class SignIn extends DbParamAccessors {
                     signIn();
 
         } else {
+//            FetchDetails fetchDetails = new FetchDetails();
+//            fetchDetails.setAccountNo(this.account_no);
+//            int result2 = fetchDetails.getAccountNo();
+
+//            System.out.println("Account number: " + result2);
+
+            System.out.println(this.getAccountNo());
             FetchDetails fetchDetails = new FetchDetails();
-            fetchDetails.setAccountNo(this.account_no);
-            int result2 = fetchDetails.getAccountNo();
 
-            System.out.println("Account number: " + result2);
-
-            FetchDetails fetch = new FetchDetails();
 
             activity();
         }
@@ -85,5 +95,6 @@ public class SignIn extends DbParamAccessors {
     public static void main(String[] args) {
         SignIn signIn = new SignIn();
         signIn.signIn();
+//        this.signIn();
     }
 }

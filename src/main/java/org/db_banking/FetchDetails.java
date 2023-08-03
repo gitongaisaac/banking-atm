@@ -10,9 +10,11 @@ public class FetchDetails extends DbParamAccessors {
     String ssn, account_type, last_name, first_name, phone_no;
 
     public FetchDetails() {
-//        SignIn signIn = new SignIn();
-//        this.account_no = signIn.account_no;
-//        this.account_no = account_no;
+        SignIn signIn = new SignIn();
+        this.account_no = signIn.getAccountNo();
+
+        System.out.println(signIn.getAccountNo());
+
         System.out.println("Account Number is: " + this.account_no + " from fetch details");
     }
 
@@ -61,8 +63,9 @@ public class FetchDetails extends DbParamAccessors {
     public String fetchLastName() {
         String query, condition, label;
 
-        FetchDetails fetchDetails = new FetchDetails();
-        String ssn = fetchDetails.fetchSSN();
+//        FetchDetails fetchDetails = new FetchDetails();
+//        String ssn = fetchDetails.fetchSSN();
+        String ssn = this.fetchSSN();
 
         query = "SELECT last_name FROM Person_info WHERE SSN = ?";
         condition = ssn;
@@ -77,8 +80,9 @@ public class FetchDetails extends DbParamAccessors {
     public String fetchFirstName() {
         String query, condition, label;
 
-        FetchDetails fetchDetails = new FetchDetails();
-        String ssn = fetchDetails.fetchSSN();
+//        FetchDetails fetchDetails = new FetchDetails();
+//        String ssn = fetchDetails.fetchSSN();
+        String ssn = this.fetchSSN();
 
         query = "SELECT first_name FROM Person_info WHERE SSN = ?";
         condition = ssn;
@@ -97,8 +101,9 @@ public class FetchDetails extends DbParamAccessors {
         condition = ssn;
         label = "phone_no";
 
-        FetchDetails fetchDetails = new FetchDetails();
-        String ssn = fetchDetails.fetchSSN();
+//        FetchDetails fetchDetails = new FetchDetails();
+//        String ssn = fetchDetails.fetchSSN();
+        String ssn = this.fetchSSN();
 
         DbParamAccessors dbParamAccessors = new DbParamAccessors();
         this.phone_no = dbParamAccessors.dbStringAccessor(query, condition, label);
