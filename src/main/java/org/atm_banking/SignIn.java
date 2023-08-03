@@ -30,7 +30,7 @@ public class SignIn extends DbParamAccessors {
         System.out.println(activity);
     }
 
-    public int getAccountNo() {
+    public int getAccountPin() {
         /* Fetch the account_pin which corresponds to the account_no entered. Uses the DbParamAccessors class to fetch. */
         String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
         int condition = this.account_no;
@@ -52,7 +52,7 @@ public class SignIn extends DbParamAccessors {
         System.out.print("Account Number: ");
         this.account_no = scanner.nextInt();
 
-        int result = getAccountNo();
+        int result = getAccountPin();
 
         // PIn
         System.out.print("Pin number: ");
@@ -69,21 +69,16 @@ public class SignIn extends DbParamAccessors {
                 signIn();
         } else {
             FetchDetails fetchDetails = new FetchDetails();
+            fetchDetails.setAccountNo(this.account_no);
+            int result2 = fetchDetails.getAccountNo();
+
             activity();
-            System.out.println();
         }
     }
 
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
-//        String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
-//        int condition = 123456789;
-//        String label = "account_pin";
-//
-//        SignIn signIn = new SignIn();
-//        int result = signIn.dbIntAccessor(query, condition, label);
-//
-//        System.out.println(result);
-//        signIn();
+        SignIn signIn = new SignIn();
+        signIn.signIn();
     }
 }

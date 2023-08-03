@@ -1,10 +1,12 @@
 package org.atm_banking;
 
 /* Import packages */
+import org.db_banking.FetchDetails;
+
 import java.util.Scanner;
 
 /* This is the main class and contains the main method. Has only one method: switchActivity() and the main method */
-public class Atm {
+public class Atm extends FetchDetails {
 
     /* Directs the user to which activity they want to perform by switching the different classes containing the various
      * banking activity i.e. checkBalance() for checking balance, deposit() For depositing cash, withdraw() for withdrawing  cash

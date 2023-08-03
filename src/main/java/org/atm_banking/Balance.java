@@ -1,12 +1,16 @@
 package org.atm_banking;
 
+import org.db_banking.FetchDetails;
+
 /* Check balance account. Has one method: balance() */
-public class Balance {
+public class Balance extends FetchDetails {
 
     /* Displays the balance of the user */
     public static void balance(){
+        Balance balance = new Balance();
+        double total_balance = balance.getTotalBalance();
 
-        System.out.println("Your account balance is 50,000");
+        System.out.println("Your account balance is " + total_balance);
         SignIn.activity();
         Atm.switchActivity();
     }
