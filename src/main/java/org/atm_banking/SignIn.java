@@ -60,7 +60,7 @@ public class SignIn extends DbParamAccessors {
         System.out.print("Account Number: ");
         this.account_no = scanner.nextInt();
 
-        int result = fetchAccountPin();
+        int enteredAccNo = fetchAccountPin();
 
         // PIn
         System.out.print("Pin number: ");
@@ -68,7 +68,7 @@ public class SignIn extends DbParamAccessors {
 
         /* Validation. Checks if the Account Number entered corresponds to the pin. It gives the user 3 chances to enter
          * the credentials */
-        if (enteredPin != result) {
+        if (enteredPin != enteredAccNo) {
                 System.out.println("The details do not match");
                 System.out.println();
                 System.out.println("-------------------------------------------------");
@@ -77,15 +77,10 @@ public class SignIn extends DbParamAccessors {
                     signIn();
 
         } else {
-//            FetchDetails fetchDetails = new FetchDetails();
-//            fetchDetails.setAccountNo(this.account_no);
-//            int result2 = fetchDetails.getAccountNo();
-
-//            System.out.println("Account number: " + result2);
-
-            System.out.println(this.getAccountNo());
             FetchDetails fetchDetails = new FetchDetails();
+            fetchDetails.account_no = this.account_no;
 
+            System.out.println("Account Number from fetch details " + fetchDetails.getAccountNo());
 
             activity();
         }

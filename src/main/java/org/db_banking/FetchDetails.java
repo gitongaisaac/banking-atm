@@ -3,20 +3,18 @@ package org.db_banking;
 import org.atm_banking.SignIn;
 
 public class FetchDetails extends DbParamAccessors {
-    int account_no;
+    public int account_no;
 
     double total_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
 
-    public FetchDetails() {
-        SignIn signIn = new SignIn();
-        this.account_no = signIn.getAccountNo();
-
-        System.out.println(signIn.getAccountNo());
-
-        System.out.println("Account Number is: " + this.account_no + " from fetch details");
-    }
+//    public FetchDetails() {
+//        SignIn signIn = new SignIn();
+//        this.account_no = signIn.getAccountNo();
+//
+//        System.out.println("Account Number is: " + this.account_no + " from fetch details");
+//    }
 
     public int getAccountNo() {
         return this.account_no;

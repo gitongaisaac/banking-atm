@@ -17,8 +17,6 @@ public class Deposit {
 
         System.out.println("your account balance is " + totalAmount);
 
-        SignIn.activity();
-        Atm.switchActivity();
         return totalAmount;
     }
 

@@ -23,25 +23,33 @@ public class Atm extends FetchDetails {
         *  1. Balance          2. Deposit          3.Withdraw
         *  4. Transfer              5. Transaction History          6. Quit */
         switch (switchActivity) {
-            case 1:
+            case 1 -> {
                 Balance.balance();
-                break;
-            case 2:
+                SignIn.activity();
+                Atm.switchActivity();
+            }
+            case 2 -> {
                 Deposit.deposit(50000);
-                break;
-            case 3:
+                SignIn.activity();
+                Atm.switchActivity();
+            }
+            case 3 -> {
                 Withdraw.withdraw(50000);
-                break;
-            case 4:
+                SignIn.activity();
+                Atm.switchActivity();
+            }
+            case 4 -> {
                 Transfer.transfer();
-                break;
-            case 5:
+                SignIn.activity();
+                Atm.switchActivity();
+            }
+            case 5 -> {
                 TransHis.transHis();
-                break;
-            case 6:
-                System.out.println("Thank you for using our services");
-            default:
-                System.out.println("Activity " + switchActivity + " does not exist");
+                SignIn.activity();
+                Atm.switchActivity();
+            }
+            case 6 -> System.out.println("Thank you for using our services");
+            default -> System.out.println("Activity " + switchActivity + " does not exist");
         }
 
     }
