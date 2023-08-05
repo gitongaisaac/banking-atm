@@ -30,9 +30,6 @@ public class SignIn extends DbParamAccessors {
         return this.account_no;
     }
 
-     public void setAccountNo(int acc_no) {
-        this.account_no = acc_no;
-     }
 
     /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
      * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
@@ -60,7 +57,8 @@ public class SignIn extends DbParamAccessors {
         System.out.print("Account Number: ");
         this.account_no = scanner.nextInt();
 
-        int enteredAccNo = fetchAccountPin();
+        FetchDetails fetchDetails = new FetchDetails();
+        int enteredAccNo = fetchDetails.fetchAccountPin(this.account_no);
 
         // PIn
         System.out.print("Pin number: ");
@@ -77,19 +75,20 @@ public class SignIn extends DbParamAccessors {
                     signIn();
 
         } else {
-            FetchDetails fetchDetails = new FetchDetails();
-            fetchDetails.account_no = this.account_no;
-
-            System.out.println("Account Number from fetch details " + fetchDetails.getAccountNo());
+            fetchDetails.fetchAccountNo(enteredPin);
 
             activity();
         }
+
+        fetchDetails.account_no = this.account_no;
+
+//        System.out.println("Account Number from fetch details " + fetchDetails.getAccountNo());
+//        System.out.println("Account balance: $" + fetchDetails.fetchTotalBalance());
     }
 
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
         SignIn signIn = new SignIn();
         signIn.signIn();
-//        this.signIn();
     }
 }
