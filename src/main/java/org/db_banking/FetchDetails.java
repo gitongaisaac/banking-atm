@@ -9,17 +9,6 @@ public class FetchDetails extends DbParamAccessors {
 
     String ssn, account_type, last_name, first_name, phone_no;
 
-//    public FetchDetails() {
-//        SignIn signIn = new SignIn();
-//        this.account_no = signIn.getAccountNo();
-//
-//        System.out.println("Account Number is: " + this.account_no + " from fetch details");
-//    }
-
-    public int getAccountNo() {
-        return this.account_no;
-    }
-
     public void setAccountNo(int account_no) {
         this.account_no = account_no;
     }

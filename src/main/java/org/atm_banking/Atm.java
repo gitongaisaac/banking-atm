@@ -12,12 +12,6 @@ public class Atm extends FetchDetails {
      * banking activity i.e. checkBalance() for checking balance, deposit() For depositing cash, withdraw() for withdrawing  cash
      * transfer() for transferring funds and transHIs() (Transaction history). */
     public static void switchActivity() {
-        SignIn signIn = new SignIn();
-        FetchDetails fetchDetails = new FetchDetails();
-        fetchDetails.account_no = signIn.getAccountNo();
-
-        System.out.println("Account number from main method: " + signIn.getAccountNo());
-
         System.out.print("\nChoice: ");
 
         /* Accepts input from the user */

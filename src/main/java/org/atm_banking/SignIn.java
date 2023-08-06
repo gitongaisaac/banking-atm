@@ -4,27 +4,13 @@ package org.atm_banking;
 import java.util.Scanner;
 
 /* User Packages */
-import org.db_banking.DbNonParamAccessors;
-import org.db_banking.DbParamAccessors;
 import org.db_banking.FetchDetails;
 
 /* This class takes care of user validation to ensure that users only access accounts to which they have access to.
  * Has 2 methods. activity() and signIn()  */
-public class SignIn extends DbParamAccessors {
+public class SignIn {
 
     private int account_no;
-
-    private int fetchAccountPin() {
-        /* Fetch the account_pin which corresponds to the account_no entered. Uses the DbParamAccessors class to fetch. */
-        String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
-        int condition = this.account_no;
-        String label = "account_pin";
-
-        SignIn signIn = new SignIn();
-        int result = signIn.dbIntegerAccessor(query, condition, label);
-
-        return result;
-    }
 
     public int getAccountNo() {
         return this.account_no;
@@ -58,7 +44,7 @@ public class SignIn extends DbParamAccessors {
         this.account_no = scanner.nextInt();
 
         FetchDetails fetchDetails = new FetchDetails();
-        int enteredAccNo = fetchDetails.fetchAccountPin(this.account_no);
+        int enteredPinNo = fetchDetails.fetchAccountPin(this.account_no);
 
         // PIn
         System.out.print("Pin number: ");
@@ -66,7 +52,7 @@ public class SignIn extends DbParamAccessors {
 
         /* Validation. Checks if the Account Number entered corresponds to the pin. It gives the user 3 chances to enter
          * the credentials */
-        if (enteredPin != enteredAccNo) {
+        if (enteredPin != enteredPinNo) {
                 System.out.println("The details do not match");
                 System.out.println();
                 System.out.println("-------------------------------------------------");
@@ -75,15 +61,8 @@ public class SignIn extends DbParamAccessors {
                     signIn();
 
         } else {
-            fetchDetails.fetchAccountNo(enteredPin);
-
             activity();
         }
-
-        fetchDetails.account_no = this.account_no;
-
-//        System.out.println("Account Number from fetch details " + fetchDetails.getAccountNo());
-//        System.out.println("Account balance: $" + fetchDetails.fetchTotalBalance());
     }
 
     /* *********************************************************************************************************** */
