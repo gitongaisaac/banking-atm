@@ -5,15 +5,18 @@ import org.db_banking.FetchDetails;
 
 import java.util.Scanner;
 
-/* This is the main class and contains the main method. */
+/* This is the main class and contains the main method. Has 4 methods: activity(), signIn(), switchActivity(), and
+ * getAccountNo(). It extends the fetchDetails() class to use its methods to fetch basic user details such as
+ * account_pin */
 public class Atm extends FetchDetails {
     private int account_no;
 
+    /* An accessor to access the account_no */
     public int getAccountNo() {
         return this.account_no;
     }
 
-    /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
+    /* Displays the activities that the user can perform on their account after they sign in and are validated.
      * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
     public void activity() {
         System.out.println("\n--------------------------------------\n");
@@ -31,20 +34,20 @@ public class Atm extends FetchDetails {
         System.out.println(activity);
     }
 
-    /* *********************************************************************************************************** */
-    /* This method takes care of the actual validation. It allows the user to enter their account number and the pin and
-     * the system validates these credentials. If the credentials are correct. The user can access the account */
+    /* Takes care of the validation. It allows the user to enter their account number and the pin and the
+     * system validates these credentials. If the credentials are correct. The user can access the account. */
     public void signIn() {
         Scanner scanner = new Scanner(System.in);
 
-        // Account number
+        // Account number (input from user)
         System.out.print("Account Number: ");
         this.account_no = scanner.nextInt();
 
+        // FetchDetails to fetch the account pin
         FetchDetails fetchDetails = new FetchDetails();
         int enteredPinNo = fetchDetails.fetchAccountPin(this.account_no);
 
-        // PIn
+        // PIn (User input)
         System.out.print("Pin number: ");
         int enteredPin = scanner.nextInt();
 

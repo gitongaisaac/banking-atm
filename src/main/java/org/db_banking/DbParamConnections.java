@@ -5,8 +5,6 @@ import java.sql.*;
 abstract class DbParamConnections {
     /* JDBC MySQL Driver*/
     private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-//    private final String jdbcDriver = "com.mysql.jdbc.Driver";
-//    com.mysql.jdbc.Driver
 
     /* Connection Requirements */
     /* Database connection URL */
