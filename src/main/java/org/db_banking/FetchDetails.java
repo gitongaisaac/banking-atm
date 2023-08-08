@@ -3,10 +3,18 @@ package org.db_banking;
 /* Class FetchDetails. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
  * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
  * from the DbParamAccessors class. */
-public class FetchDetails extends DbParamAccessors {
+public class FetchDetails extends DbParamConnections {
     double account_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
+
+
+    DbParamConnections dbParamConnections = new DbParamConnections() {
+        @Override
+        protected int dbIntConnection(String query, int condition, String label) {
+            return super.dbIntConnection(query, condition, label);
+        }
+    };
 
     /* Fetch the said account pin and return it */
     public int fetchAccountPin(int account_no) {
@@ -18,18 +26,21 @@ public class FetchDetails extends DbParamAccessors {
 
         /* FetchDetails object */
         FetchDetails fetchDetails = new FetchDetails();
-        account_pin = fetchDetails.dbIntegerAccessor(query, account_no, label);
+//        account_pin = fetchDetails.dbIntegerAccessor(query, account_no, label);
+        account_pin = fetchDetails.dbIntConnection(query, account_no, label);
 
         return account_pin;
     }
 
     /* Fetch said Account Number and return */
-    public void fetchAccountNo(int pin) {
+    public int fetchAccountNo(int pin) {
         String query = "SELECT account_no FROM Account_info WHERE account_pin = ?";
         String label = "account_no";
 
         FetchDetails fetchDetails = new FetchDetails();
-        int account_no = fetchDetails.dbIntegerAccessor(query, pin, label);
+//        int account_no = fetchDetails.dbIntConnection(query, pin, label);
+
+        return fetchDetails.dbIntConnection(query, pin, label);
     }
 
     /* Fetch said Account Balance and return it */
@@ -38,7 +49,7 @@ public class FetchDetails extends DbParamAccessors {
         String label = "total_balance";
 
         FetchDetails fetchDetails = new FetchDetails();
-        this.account_balance = fetchDetails.dbDoubleAccessor(query, account_no, label);
+        this.account_balance = fetchDetails.dbDoubleConnection(query, account_no, label);
 
         return this.account_balance;
     }
@@ -49,7 +60,7 @@ public class FetchDetails extends DbParamAccessors {
         String label = "SSN";
 
         FetchDetails fetchDetails = new FetchDetails();
-        this.ssn = fetchDetails.dbStringIAccessor(query, account_no, label);
+        this.ssn = fetchDetails.dbStringIConnection(query, account_no, label);
 
         return this.ssn;
     }
@@ -60,7 +71,7 @@ public class FetchDetails extends DbParamAccessors {
         String label = "account_type";
 
         FetchDetails fetchDetails = new FetchDetails();
-        this.account_type = fetchDetails.dbStringIAccessor(query, account_no, label);
+        this.account_type = fetchDetails.dbStringIConnection(query, account_no, label);
 
         return this.account_type;
     }
@@ -76,7 +87,7 @@ public class FetchDetails extends DbParamAccessors {
         label = "last_name";
 
         FetchDetails fetchDetails = new FetchDetails();
-        this.last_name = fetchDetails.dbStringAccessor(query, condition, label);
+        this.last_name = fetchDetails.dbStringConnection(query, condition, label);
 
         return this.last_name;
     }
@@ -92,7 +103,7 @@ public class FetchDetails extends DbParamAccessors {
         label = "first_name";
 
         FetchDetails fetchDetails = new FetchDetails();
-        this.first_name = fetchDetails.dbStringAccessor(query, condition,label);
+        this.first_name = fetchDetails.dbStringConnection(query, condition,label);
 
         return this.first_name;
     }
@@ -108,7 +119,7 @@ public class FetchDetails extends DbParamAccessors {
         String ssn = this.fetchSSN(account_no);
 
         FetchDetails fetchDetails = new FetchDetails();
-        this.phone_no = fetchDetails.dbStringAccessor(query, condition, label);
+        this.phone_no = fetchDetails.dbStringConnection(query, condition, label);
 
         return this.phone_no;
     }
