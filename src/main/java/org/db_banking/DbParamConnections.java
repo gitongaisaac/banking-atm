@@ -165,5 +165,4 @@ abstract class DbParamConnections {
 
         return result;
     }
-
 }
