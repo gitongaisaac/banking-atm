@@ -3,13 +3,13 @@ package org.db_banking;
 /* Class FetchDetails. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
  * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
  * from the DbParamAccessors class. */
-public class FetchDetails extends DbParamConnections {
+public class FetchDetails extends DbFetchConnections {
     double account_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
 
 
-    DbParamConnections dbParamConnections = new DbParamConnections() {
+    DbFetchConnections dbFetchConnections = new DbFetchConnections() {
         @Override
         protected int dbIntConnection(String query, int condition, String label) {
             return super.dbIntConnection(query, condition, label);

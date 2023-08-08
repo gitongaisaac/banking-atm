@@ -2,7 +2,7 @@ package org.db_banking;
 
 import java.sql.*;
 
-abstract class DbParamConnections {
+abstract class DbFetchConnections {
     /* JDBC MySQL Driver*/
     private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
 

@@ -86,7 +86,7 @@ public class Atm extends FetchDetails {
                 this.switchActivity();
             }
             case 2 -> {
-                Deposit.deposit();
+                Deposit.deposit(this.account_no);
                 this.activity();
                 this.switchActivity();
             }
@@ -108,7 +108,6 @@ public class Atm extends FetchDetails {
             case 6 -> System.out.println("\nThank you for using our services\n");
             default -> System.out.println("Activity " + switchActivity + " does not exist");
         }
-
     }
 
     /* *********************************************************************************************************** */
