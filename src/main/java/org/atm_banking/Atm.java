@@ -5,29 +5,28 @@ import org.db_banking.FetchDetails;
 
 import java.util.Scanner;
 
-/* This is the main class and contains the main method. Has only one method: switchActivity() and the main method */
+/* This is the main class and contains the main method. */
 public class Atm extends FetchDetails {
-
-
     private int account_no;
 
     public int getAccountNo() {
         return this.account_no;
     }
 
-
     /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
      * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
     public void activity() {
         System.out.println("\n--------------------------------------\n");
 
-        String activity = "Which account do you want to access"
-                + "\n1. Check balance"
-                + "\n2. Deposit "
-                + "\n3. Withdraw  "
-                + "\n4. Transfer  "
-                + "\n5. Transaction history"
-                + "\n6. Quit";
+        String activity = """
+                Which account do you want to access
+                1. Check balance
+                2. Deposit\s
+                3. Withdraw \s
+                4. Transfer \s
+                5. Transaction history
+                6. Quit
+                """;
 
         System.out.println(activity);
     }
@@ -64,20 +63,17 @@ public class Atm extends FetchDetails {
         }
     }
 
-
     /* Directs the user to which activity they want to perform by switching the different classes containing the various
-     * banking activity i.e. checkBalance() for checking balance, deposit() For depositing cash, withdraw() for withdrawing  cash
+     * banking activities i.e. checkBalance() for checking balance, deposit() For depositing cash, withdraw() for withdrawing  cash
      * transfer() for transferring funds and transHIs() (Transaction history). */
     public void switchActivity() {
         System.out.print("\nChoice: ");
-
-        Atm atm = new Atm();
 
         /* Accepts input from the user */
         Scanner scanner = new Scanner(System.in);
         int switchActivity = scanner.nextInt();
 
-        /* A switch claus for switching between the different class methods according to the input entered by the user
+        /* A switch class for switching between the different class methods according to the input entered by the user
         *  1. Balance          2. Deposit          3.Withdraw
         *  4. Transfer              5. Transaction History          6. Quit */
         switch (switchActivity) {
@@ -88,7 +84,7 @@ public class Atm extends FetchDetails {
             }
             case 2 -> {
                 Deposit.deposit();
-                activity();
+                this.activity();
                 this.switchActivity();
             }
             case 3 -> {
@@ -115,6 +111,7 @@ public class Atm extends FetchDetails {
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
         Atm atm = new Atm();
+
         atm.signIn();
         atm.switchActivity();
 

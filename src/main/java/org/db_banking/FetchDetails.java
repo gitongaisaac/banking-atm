@@ -1,15 +1,9 @@
 package org.db_banking;
 
 public class FetchDetails extends DbParamAccessors {
-//    public int account_no;
-
     double total_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
-
-//    public void setAccountNo(int account_no) {
-//        this.account_no = account_no;
-//    }
 
     public int fetchAccountPin(int account_no) {
         int account_pin;
@@ -65,8 +59,6 @@ public class FetchDetails extends DbParamAccessors {
     public String fetchLastName(int account_no) {
         String query, condition, label;
 
-//        FetchDetails fetchDetails = new FetchDetails();
-//        String ssn = fetchDetails.fetchSSN();
         String ssn = this.fetchSSN(account_no);
 
         query = "SELECT last_name FROM Person_info WHERE SSN = ?";
@@ -82,8 +74,6 @@ public class FetchDetails extends DbParamAccessors {
     public String fetchFirstName(int account_no) {
         String query, condition, label;
 
-//        FetchDetails fetchDetails = new FetchDetails();
-//        String ssn = fetchDetails.fetchSSN();
         String ssn = this.fetchSSN(account_no);
 
         query = "SELECT first_name FROM Person_info WHERE SSN = ?";
@@ -103,8 +93,6 @@ public class FetchDetails extends DbParamAccessors {
         condition = ssn;
         label = "phone_no";
 
-//        FetchDetails fetchDetails = new FetchDetails();
-//        String ssn = fetchDetails.fetchSSN();
         String ssn = this.fetchSSN(account_no);
 
         FetchDetails fetchDetails = new FetchDetails();
