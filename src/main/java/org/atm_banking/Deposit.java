@@ -1,11 +1,11 @@
 package org.atm_banking;
 
-import org.db_banking.FetchDetails;
+import org.db_banking.FetchRequests;
 
 import java.util.Scanner;
 
 /* Deposit class. Takes care of transactions concerning depositing of cash. Has one method deposit() */
-public class Deposit extends FetchDetails {
+public class Deposit extends FetchRequests {
 
     int account_no;
 

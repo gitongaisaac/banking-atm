@@ -1,9 +1,9 @@
 package org.atm_banking;
 
-import org.db_banking.FetchDetails;
+import org.db_banking.FetchRequests;
 
 /* Check balance account. Has one method: balance() */
-public class Balance extends FetchDetails {
+public class Balance extends FetchRequests {
 
     /* Displays the balance of the user */
     public static void balance(int account_no) {
