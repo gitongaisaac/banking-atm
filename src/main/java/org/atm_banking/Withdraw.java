@@ -3,10 +3,8 @@ package org.atm_banking;
 import java.util.Scanner;
 
 public class Withdraw {
-
-    int amountInTheAccount = 50000;
-
-    public static int withdraw (int amountInTheAccount){
+    public static int withdraw (){
+        int amountInTheAccount = 50000;
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount you wish to withdraw: ");
@@ -18,6 +16,6 @@ public class Withdraw {
     }
 
     public static void main(String[] args) {
-        withdraw(50000);
+        withdraw();
     }
 }

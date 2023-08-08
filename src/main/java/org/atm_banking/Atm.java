@@ -8,11 +8,70 @@ import java.util.Scanner;
 /* This is the main class and contains the main method. Has only one method: switchActivity() and the main method */
 public class Atm extends FetchDetails {
 
+
+    private int account_no;
+
+    public int getAccountNo() {
+        return this.account_no;
+    }
+
+
+    /* This method Displays the activities that the user can perform on their account after they sign in and are validated.
+     * The user performs a specific activity by entering the number corresponding to the activity they wish to access */
+    public void activity() {
+        System.out.println("\n--------------------------------------\n");
+
+        String activity = "Which account do you want to access"
+                + "\n1. Check balance"
+                + "\n2. Deposit "
+                + "\n3. Withdraw  "
+                + "\n4. Transfer  "
+                + "\n5. Transaction history"
+                + "\n6. Quit";
+
+        System.out.println(activity);
+    }
+
+    /* *********************************************************************************************************** */
+    /* This method takes care of the actual validation. It allows the user to enter their account number and the pin and
+     * the system validates these credentials. If the credentials are correct. The user can access the account */
+    public void signIn() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Account number
+        System.out.print("Account Number: ");
+        this.account_no = scanner.nextInt();
+
+        FetchDetails fetchDetails = new FetchDetails();
+        int enteredPinNo = fetchDetails.fetchAccountPin(this.account_no);
+
+        // PIn
+        System.out.print("Pin number: ");
+        int enteredPin = scanner.nextInt();
+
+        /* Validation. Checks if the Account Number entered corresponds to the pin. It gives the user 3 chances to enter
+         * the credentials */
+        if (enteredPin != enteredPinNo) {
+            System.out.println("The details do not match");
+            System.out.println();
+            System.out.println("-------------------------------------------------");
+            System.out.println();
+
+            signIn();
+
+        } else {
+            activity();
+        }
+    }
+
+
     /* Directs the user to which activity they want to perform by switching the different classes containing the various
      * banking activity i.e. checkBalance() for checking balance, deposit() For depositing cash, withdraw() for withdrawing  cash
      * transfer() for transferring funds and transHIs() (Transaction history). */
-    public static void switchActivity() {
+    public void switchActivity() {
         System.out.print("\nChoice: ");
+
+        Atm atm = new Atm();
 
         /* Accepts input from the user */
         Scanner scanner = new Scanner(System.in);
@@ -23,29 +82,29 @@ public class Atm extends FetchDetails {
         *  4. Transfer              5. Transaction History          6. Quit */
         switch (switchActivity) {
             case 1 -> {
-                Balance.balance();
-                SignIn.activity();
-                Atm.switchActivity();
+                Balance.balance(this.account_no);
+                this.activity();
+                this.switchActivity();
             }
             case 2 -> {
-                Deposit.deposit(50000);
-                SignIn.activity();
-                Atm.switchActivity();
+                Deposit.deposit();
+                activity();
+                this.switchActivity();
             }
             case 3 -> {
-                Withdraw.withdraw(50000);
-                SignIn.activity();
-                Atm.switchActivity();
+                Withdraw.withdraw();
+                this.activity();
+                this.switchActivity();
             }
             case 4 -> {
                 Transfer.transfer();
-                SignIn.activity();
-                Atm.switchActivity();
+                this.activity();
+                this.switchActivity();
             }
             case 5 -> {
                 TransHis.transHis();
-                SignIn.activity();
-                Atm.switchActivity();
+                this.activity();
+                this.switchActivity();
             }
             case 6 -> System.out.println("\nThank you for using our services\n");
             default -> System.out.println("Activity " + switchActivity + " does not exist");
@@ -55,9 +114,9 @@ public class Atm extends FetchDetails {
 
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
-        SignIn signIn = new SignIn();
-        signIn.signIn();
-        switchActivity();
+        Atm atm = new Atm();
+        atm.signIn();
+        atm.switchActivity();
 
     }
 }

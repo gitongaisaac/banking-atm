@@ -6,9 +6,9 @@ import org.db_banking.FetchDetails;
 public class Balance extends FetchDetails {
 
     /* Displays the balance of the user */
-    public static void balance(){
+    public static void balance(int account_no){
         Balance balance = new Balance();
-        double total_balance = balance.fetchTotalBalance();
+        double total_balance = balance.fetchTotalBalance(account_no);
 
         System.out.println("Your account balance is $" + total_balance);
     }
