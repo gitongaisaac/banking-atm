@@ -7,29 +7,24 @@ import java.util.Scanner;
 /* Deposit class. Takes care of transactions concerning depositing of cash. Has one method deposit() */
 public class Deposit extends Requests {
 
-    int account_no;
-
-    double account_bal, amt;
-
-    public double getAmt() {
+    public static double getAmt() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("How much do you wish to deposit?");
         System.out.print("Amount: $");
-        amt = scanner.nextDouble();
 
-        return amt;
+        return scanner.nextDouble();
     }
 
     /* Total amount in the account */
     public static void deposit(int account_no) {
         Deposit deposit = new Deposit();
-        double amt = deposit.getAmt();
+        double amt = getAmt();
 
         double balance = deposit.fetchAccountBalance(account_no);
         System.out.println("Account Balance: $" + balance);
 
-        deposit.postAccountBalance(account_no, amt);
+        deposit.depositBalance(account_no, amt);
 
         balance = deposit.fetchAccountBalance(account_no);
         System.out.println("\nNew Account Balance: $" + balance);

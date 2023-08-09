@@ -91,7 +91,7 @@ public class Atm extends Requests {
                 this.switchActivity();
             }
             case 3 -> {
-                Withdraw.withdraw();
+                Withdraw.withdraw(this.account_no);
                 this.activity();
                 this.switchActivity();
             }
