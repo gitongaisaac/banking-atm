@@ -9,11 +9,9 @@ public class Deposit extends FetchRequests {
 
     int account_no;
 
-    double account_bal;
+    double account_bal, amt;
 
     public double getAmt() {
-        double amt;
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("How much do you wish to deposit?");

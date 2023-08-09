@@ -8,14 +8,6 @@ public class FetchRequests extends DbFetchConnections {
 
     String ssn, account_type, last_name, first_name, phone_no;
 
-
-    DbFetchConnections dbFetchConnections = new DbFetchConnections() {
-        @Override
-        protected int dbIntConnection(String query, int condition, String label) {
-            return super.dbIntConnection(query, condition, label);
-        }
-    };
-
     /* Fetch the said account pin and return it */
     public int fetchAccountPin(int account_no) {
         int account_pin;

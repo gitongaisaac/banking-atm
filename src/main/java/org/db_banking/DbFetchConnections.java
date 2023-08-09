@@ -21,7 +21,7 @@ abstract class DbFetchConnections {
     PreparedStatement statement;
     ResultSet resultSet;
 
-    protected int dbIntConnection(String query, int condition, String lable) {
+    protected int dbIntConnection(String query, int condition, String label) {
     int result = 0;
 
     try {
@@ -35,10 +35,11 @@ abstract class DbFetchConnections {
         resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
-            result = resultSet.getInt(lable);
+            result = resultSet.getInt(label);
         }
 
         connection.close();
+        statement.close();
         resultSet.close();
 
     } catch (Exception e) {
@@ -46,8 +47,6 @@ abstract class DbFetchConnections {
         System.out.println(e);
     }
 
-
-//        System.out.println(result);
         return result;
     }
 
@@ -67,6 +66,11 @@ abstract class DbFetchConnections {
             while (resultSet.next()) {
                 result = resultSet.getDouble(label);
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -90,6 +94,11 @@ abstract class DbFetchConnections {
             while (resultSet.next()) {
                 result = resultSet.getString(label);
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e ) {
             System.out.println(e);
         }
@@ -113,6 +122,11 @@ abstract class DbFetchConnections {
             while (resultSet.next()) {
                 result = String.valueOf(resultSet.getString(label));
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e ) {
             System.out.println(e);
         }
@@ -136,6 +150,11 @@ abstract class DbFetchConnections {
             while (resultSet.next()) {
                 result = String.valueOf(resultSet.getString(label));
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e ) {
             System.out.println(e);
         }
@@ -159,6 +178,11 @@ abstract class DbFetchConnections {
             while (resultSet.next()) {
                 result = String.valueOf(resultSet.getString(label));
             }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
         } catch (Exception e ) {
             System.out.println(e);
         }
