@@ -25,10 +25,13 @@ public class Deposit extends Requests {
     public static void deposit(int account_no) {
         Deposit deposit = new Deposit();
         double amt = deposit.getAmt();
+
         double balance = deposit.fetchAccountBalance(account_no);
-
-
-
         System.out.println("Account Balance: $" + balance);
+
+        deposit.postAccountBalance(account_no, amt);
+
+        balance = deposit.fetchAccountBalance(account_no);
+        System.out.println("\nNew Account Balance: $" + balance);
     }
 }

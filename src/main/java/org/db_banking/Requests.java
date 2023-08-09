@@ -3,7 +3,7 @@ package org.db_banking;
 /* Class Requests. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
  * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
  * from the DbParamAccessors class. */
-public class Requests extends DbFetchConnections {
+public class Requests extends DbConnections {
     double account_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
@@ -114,6 +114,21 @@ public class Requests extends DbFetchConnections {
         this.phone_no = requests.dbStringConnection(query, condition, label);
 
         return this.phone_no;
+    }
+
+/*
+ * Post Rquests
+ */
+
+    public void postAccountBalance(int account_no, double amt) {
+        String query = """
+                UPDATE Account_info
+                SET total_balance = total_balance + ?
+                WHERE account_no = ?
+                """;
+
+        Requests requests = new Requests();
+        requests.postDbDoubleConnection(query, account_no, amt);
     }
 
 //    public static void main(String[] args) {

@@ -2,7 +2,7 @@ package org.db_banking;
 
 import java.sql.*;
 
-abstract class DbFetchConnections {
+abstract class DbConnections {
     /* JDBC MySQL Driver*/
     private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
 
@@ -160,5 +160,49 @@ abstract class DbFetchConnections {
         }
 
         return result;
+    }
+
+/*
+ * UPDATE CONNECTIONS
+*/
+
+    public void postDbDoubleConnection(String query, int condition1, double condition2) {
+        try {
+            Class.forName(jdbcDriver);
+
+            connection = DriverManager.getConnection(this.url, this.username, this.password);
+
+            statement = connection.prepareStatement(query);
+            statement.setDouble(1, condition2);
+            statement.setInt(2, condition1);
+
+            statement.executeUpdate();
+
+            connection.close();
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void postDbStringConnection(String query, int condition1, String condition2) {
+        try {
+            Class.forName(jdbcDriver);
+
+            connection = DriverManager.getConnection(this.url, this.username, this.password);
+
+            statement = connection.prepareStatement(query);
+            statement.setString(1, condition2);
+            statement.setInt(2, condition1);
+
+            statement.executeUpdate();
+
+            connection.close();
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
