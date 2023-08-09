@@ -1,9 +1,9 @@
 package org.db_banking;
 
-/* Class FetchRequests. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
+/* Class Requests. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
  * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
  * from the DbParamAccessors class. */
-public class FetchRequests extends DbFetchConnections {
+public class Requests extends DbFetchConnections {
     double account_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
@@ -16,10 +16,10 @@ public class FetchRequests extends DbFetchConnections {
         String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
         String label = "account_pin";
 
-        /* FetchRequests object */
-        FetchRequests fetchRequests = new FetchRequests();
-//        account_pin = fetchRequests.dbIntegerAccessor(query, account_no, label);
-        account_pin = fetchRequests.dbIntConnection(query, account_no, label);
+        /* Requests object */
+        Requests requests = new Requests();
+//        account_pin = requests.dbIntegerAccessor(query, account_no, label);
+        account_pin = requests.dbIntConnection(query, account_no, label);
 
         return account_pin;
     }
@@ -29,10 +29,10 @@ public class FetchRequests extends DbFetchConnections {
         String query = "SELECT account_no FROM Account_info WHERE account_pin = ?";
         String label = "account_no";
 
-        FetchRequests fetchRequests = new FetchRequests();
-//        int account_no = fetchRequests.dbIntConnection(query, pin, label);
+        Requests requests = new Requests();
+//        int account_no = requests.dbIntConnection(query, pin, label);
 
-        return fetchRequests.dbIntConnection(query, pin, label);
+        return requests.dbIntConnection(query, pin, label);
     }
 
     /* Fetch said Account Balance and return it */
@@ -40,8 +40,8 @@ public class FetchRequests extends DbFetchConnections {
         String query = "SELECT total_balance FROM Account_info WHERE account_no = ?";
         String label = "total_balance";
 
-        FetchRequests fetchRequests = new FetchRequests();
-        this.account_balance = fetchRequests.dbDoubleConnection(query, account_no, label);
+        Requests requests = new Requests();
+        this.account_balance = requests.dbDoubleConnection(query, account_no, label);
 
         return this.account_balance;
     }
@@ -51,8 +51,8 @@ public class FetchRequests extends DbFetchConnections {
         String query = "SELECT SSN FROM Account_info WHERE account_no = ?";
         String label = "SSN";
 
-        FetchRequests fetchRequests = new FetchRequests();
-        this.ssn = fetchRequests.dbStringIConnection(query, account_no, label);
+        Requests requests = new Requests();
+        this.ssn = requests.dbStringConnection(query, account_no, label);
 
         return this.ssn;
     }
@@ -62,8 +62,8 @@ public class FetchRequests extends DbFetchConnections {
         String query = "SELECT account_type FROM Account_info WHERE account_no = ?";
         String label = "account_type";
 
-        FetchRequests fetchRequests = new FetchRequests();
-        this.account_type = fetchRequests.dbStringIConnection(query, account_no, label);
+        Requests requests = new Requests();
+        this.account_type = requests.dbStringConnection(query, account_no, label);
 
         return this.account_type;
     }
@@ -78,8 +78,8 @@ public class FetchRequests extends DbFetchConnections {
         condition = ssn;
         label = "last_name";
 
-        FetchRequests fetchRequests = new FetchRequests();
-        this.last_name = fetchRequests.dbStringConnection(query, condition, label);
+        Requests requests = new Requests();
+        this.last_name = requests.dbStringConnection(query, condition, label);
 
         return this.last_name;
     }
@@ -94,8 +94,8 @@ public class FetchRequests extends DbFetchConnections {
         condition = ssn;
         label = "first_name";
 
-        FetchRequests fetchRequests = new FetchRequests();
-        this.first_name = fetchRequests.dbStringConnection(query, condition,label);
+        Requests requests = new Requests();
+        this.first_name = requests.dbStringConnection(query, condition,label);
 
         return this.first_name;
     }
@@ -110,19 +110,19 @@ public class FetchRequests extends DbFetchConnections {
 
         String ssn = this.fetchSSN(account_no);
 
-        FetchRequests fetchRequests = new FetchRequests();
-        this.phone_no = fetchRequests.dbStringConnection(query, condition, label);
+        Requests requests = new Requests();
+        this.phone_no = requests.dbStringConnection(query, condition, label);
 
         return this.phone_no;
     }
 
 //    public static void main(String[] args) {
-//        FetchRequests fetchDetails = new FetchRequests();
+//        Requests fetchDetails = new Requests();
 //        int account = fetchDetails.getAccountNo();
 //        System.out.println(account);
 //
 //        fetchDetails.setAccountNo(123456789);
-//        FetchRequests fetchDetails1 = new FetchRequests();
+//        Requests fetchDetails1 = new Requests();
 //        int account2 = fetchDetails.getAccountNo();
 //        System.out.println("From get account " + account2);
 //    }

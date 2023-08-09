@@ -1,14 +1,14 @@
 package org.atm_banking;
 
 /* Import packages */
-import org.db_banking.FetchRequests;
+import org.db_banking.Requests;
 
 import java.util.Scanner;
 
 /* This is the main class and contains the main method. Has 4 methods: activity(), signIn(), switchActivity(), and
  * getAccountNo(). It extends the fetchDetails() class to use its methods to fetch basic user details such as
  * account_pin */
-public class Atm extends FetchRequests {
+public class Atm extends Requests {
     private int account_no;
 
     /* An accessor to access the account_no */
@@ -43,9 +43,9 @@ public class Atm extends FetchRequests {
         System.out.print("Account Number: ");
         this.account_no = scanner.nextInt();
 
-        // FetchRequests to fetch the account pin
-        FetchRequests fetchRequests = new FetchRequests();
-        int enteredPinNo = fetchRequests.fetchAccountPin(this.account_no);
+        // Requests to fetch the account pin
+        Requests requests = new Requests();
+        int enteredPinNo = requests.fetchAccountPin(this.account_no);
 
         // PIn (User input)
         System.out.print("Pin number: ");

@@ -106,63 +106,7 @@ abstract class DbFetchConnections {
         return result;
     }
 
-    protected String dbDateConnection(String query, String condition, String label) {
-        String result = null;
-
-        try {
-            Class.forName(this.jdbcDriver);
-
-            connection = DriverManager.getConnection(this.url, this.username, this.password);
-
-            statement = connection.prepareStatement(query);
-            statement.setString(1, condition);
-
-            resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                result = String.valueOf(resultSet.getString(label));
-            }
-
-            connection.close();
-            statement.close();
-            resultSet.close();
-
-        } catch (Exception e ) {
-            System.out.println(e);
-        }
-
-        return result;
-    }
-
-    protected String dbTimeConnection(String query, String condition, String label) {
-        String result = null;
-
-        try {
-            Class.forName(this.jdbcDriver);
-
-            connection = DriverManager.getConnection(this.url, this.username, this.password);
-
-            statement = connection.prepareStatement(query);
-            statement.setString(1, condition);
-
-            resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                result = String.valueOf(resultSet.getString(label));
-            }
-
-            connection.close();
-            statement.close();
-            resultSet.close();
-
-        } catch (Exception e ) {
-            System.out.println(e);
-        }
-
-        return result;
-    }
-
-    protected String dbStringIConnection(String query, int condition, String label) {
+    protected String dbStringConnection(String query, int condition, String label) {
         String result = null;
 
         try {
@@ -172,6 +116,34 @@ abstract class DbFetchConnections {
 
             statement = connection.prepareStatement(query);
             statement.setInt(1, condition);
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                result = String.valueOf(resultSet.getString(label));
+            }
+
+            connection.close();
+            statement.close();
+            resultSet.close();
+
+        } catch (Exception e ) {
+            System.out.println(e);
+        }
+
+        return result;
+    }
+
+    protected String dbDateTimeConnection(String query, String condition, String label) {
+        String result = null;
+
+        try {
+            Class.forName(this.jdbcDriver);
+
+            connection = DriverManager.getConnection(this.url, this.username, this.password);
+
+            statement = connection.prepareStatement(query);
+            statement.setString(1, condition);
 
             resultSet = statement.executeQuery();
 
