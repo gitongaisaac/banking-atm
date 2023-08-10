@@ -4,9 +4,12 @@ import java.util.Random;
 
 public class Response {
 
-    public static int randomDigit() {
+    public static String randomDigit() {
         Random random = new Random();
-        return random.nextInt(10);
+        int digit = random.nextInt(10);
+//        String dig = digit.toString();
+//        return digit.toString();
+        return null;
     }
 
     public static char randomLetter() {
@@ -17,7 +20,7 @@ public class Response {
     public String REFGenerator() {
         String REF = null;
         char letter = randomLetter();
-        int digit = randomDigit();
+//        char digit = randomDigit();
 
         Random random = new Random();
         int ran = random.nextInt(2);
@@ -28,8 +31,10 @@ public class Response {
     }
 
     public static void main(String[] args) {
-        int digit = randomDigit();
-        System.out.println(digit);
+//        char digit = randomDigit();
+//        System.out.println(digit + "8");
+
+        System.out.println("8" + "0");
 
 //        char letter = randomLetter();
 //        System.out.println(letter);
