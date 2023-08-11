@@ -2,7 +2,7 @@ package org.atm_banking;
 
 import java.util.Random;
 
-public class Response {
+public class REFGenerator {
     int refCount = 0;
 
 //    String ref;
@@ -18,7 +18,7 @@ public class Response {
         return (char) ('A' + randomInt);
     }
 
-    public String REFGenerator() {
+    public String RefGenerator() {
         refCount++;
 
         String digit = randomDigit();
@@ -30,13 +30,13 @@ public class Response {
             if (ran == 0) {
                 if (refCount <= 10) {
                     ref.append(digit);
-                    REFGenerator();
+                    RefGenerator();
                 }
 
             } else {
                 if (refCount <= 10) {
                     ref.append(letter);
-                    REFGenerator();
+                    RefGenerator();
                 }
             }
 
@@ -44,8 +44,8 @@ public class Response {
     }
 
     public static void main(String[] args) {
-        Response response = new Response();
-        String ref = response.REFGenerator();
+        REFGenerator REFGenerator = new REFGenerator();
+        String ref = REFGenerator.RefGenerator();
         System.out.println(ref);
     }
 }
