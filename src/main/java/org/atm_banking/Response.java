@@ -3,13 +3,14 @@ package org.atm_banking;
 import java.util.Random;
 
 public class Response {
+    int refCount = 0;
+
+//    String ref;
+    StringBuilder ref = new StringBuilder();
 
     public static String randomDigit() {
         Random random = new Random();
-        int digit = random.nextInt(10);
-//        String dig = digit.toString();
-//        return digit.toString();
-        return null;
+        return String.valueOf(random.nextInt(10));
     }
 
     public static char randomLetter() {
@@ -18,25 +19,33 @@ public class Response {
     }
 
     public String REFGenerator() {
-        String REF = null;
+        refCount++;
+
+        String digit = randomDigit();
         char letter = randomLetter();
-//        char digit = randomDigit();
 
         Random random = new Random();
         int ran = random.nextInt(2);
 
+            if (ran == 0) {
+                if (refCount <= 10) {
+                    ref.append(digit);
+                    REFGenerator();
+                }
 
+            } else {
+                if (refCount <= 10) {
+                    ref.append(letter);
+                    REFGenerator();
+                }
+            }
 
-        return REF;
+        return ref.toString();
     }
 
     public static void main(String[] args) {
-//        char digit = randomDigit();
-//        System.out.println(digit + "8");
-
-        System.out.println("8" + "0");
-
-//        char letter = randomLetter();
-//        System.out.println(letter);
+        Response response = new Response();
+        String ref = response.REFGenerator();
+        System.out.println(ref);
     }
 }
