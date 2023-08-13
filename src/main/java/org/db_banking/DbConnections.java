@@ -205,4 +205,32 @@ abstract class DbConnections {
             System.out.println(e);
         }
     }
+
+    protected void trans(String query, String ref, String trans_name, double trans_amt, double trans_bal, String date,
+                      String time, String trans_party, int account_no, String ssn) {
+        try {
+            Class.forName(jdbcDriver);
+
+            connection = DriverManager.getConnection(this.url, this.username, this.password);
+
+            statement = connection.prepareStatement(query);
+            statement.setString(1, ref);
+            statement.setString(2, trans_name);
+            statement.setDouble(3, trans_amt);
+            statement.setDouble(4, trans_bal);
+            statement.setString(5, date);
+            statement.setString(6, time);
+            statement.setString(7, trans_party);
+            statement.setInt(8, account_no);
+            statement.setString(9, ssn);
+
+            statement.executeUpdate();
+
+            connection.close();
+            statement.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

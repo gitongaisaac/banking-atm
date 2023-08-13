@@ -5,8 +5,13 @@ import org.db_banking.Requests;
 import java.util.Scanner;
 
 public class Withdraw extends Requests {
+    double amt;
 
-    public static double getAmt() {
+    public double getAmt() {
+        return this.amt;
+    }
+
+    public static double enterAmt() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("How much do you wish to withdraw?");
@@ -15,10 +20,10 @@ public class Withdraw extends Requests {
         return scanner.nextDouble();
     }
 
-    public static void withdraw (int account_no) {
+    public void withdraw (int account_no) {
         Withdraw withdraw = new Withdraw();
 
-        double amt = getAmt();
+        this.amt = enterAmt();
         double balance = withdraw.fetchAccountBalance(account_no);
         System.out.println("Account Balance: $" + balance);
 

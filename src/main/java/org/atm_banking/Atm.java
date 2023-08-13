@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class Atm extends Requests {
     private int account_no;
 
+    double amt;
+
     /* An accessor to access the account_no */
     public int getAccountNo() {
         return this.account_no;
@@ -86,12 +88,16 @@ public class Atm extends Requests {
                 this.switchActivity();
             }
             case 2 -> {
-                Deposit.deposit(this.account_no);
+                Deposit deposit = new Deposit();
+                this.amt = deposit.getAmt();
+                deposit.deposit(this.account_no);
                 this.activity();
                 this.switchActivity();
             }
             case 3 -> {
-                Withdraw.withdraw(this.account_no);
+                Withdraw withdraw = new Withdraw();
+                this.amt = withdraw.getAmt();
+                withdraw.withdraw(this.account_no);
                 this.activity();
                 this.switchActivity();
             }
@@ -113,9 +119,7 @@ public class Atm extends Requests {
     /* *********************************************************************************************************** */
     public static void main(String[] args) {
         Atm atm = new Atm();
-
         atm.signIn();
         atm.switchActivity();
-
     }
 }

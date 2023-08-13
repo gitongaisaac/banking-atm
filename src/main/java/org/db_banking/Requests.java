@@ -117,7 +117,7 @@ public class Requests extends DbConnections {
     }
 
 /*
- * Post Rquests
+ * Post Requests
  */
 
     public void depositBalance(int account_no, double amt) {
@@ -141,6 +141,19 @@ public class Requests extends DbConnections {
         Requests requests = new Requests();
         requests.postDbDoubleConnection(query, account_no, amt);
     }
+
+    public void transaction(String ref, String trans_name, double trans_amt, double trans_bal, String date,
+                      String time, String trans_party, int account_no, String ssn) {
+        String query = """
+                INSERT INTO Account_info (REF, trans_name, trans_amt, trans_bal, trans_date, trans_time, trans_party
+                account_no, SSN)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """;
+
+        Requests requests = new Requests();
+        requests.trans(query, ref, trans_name, trans_amt, trans_bal, date, time, trans_party, account_no, ssn);
+    }
+
 
 //    public static void main(String[] args) {
 //        Requests fetchDetails = new Requests();
