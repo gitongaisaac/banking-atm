@@ -1,9 +1,10 @@
 package org.atm_banking;
 
-import org.db_banking.Requests;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import org.db_banking.Requests;
+
 
 public class Transaction extends Requests {
     String trans_name, trans_ref, trans_date, trans_time, ssn, trans_party;
@@ -24,13 +25,15 @@ public class Transaction extends Requests {
         this.trans_party = trans_party;
         this.account_no = account_no;
         this.ssn = ssn;
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
+        this.trans_time =localDateTime.format(timeFormatted);
+
+        DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.trans_date = localDateTime.format(dateFormatted);
     }
-
-    public void transDate() {
-
-    }
-
-    public void transTime() {}
 
     public void addTransaction() {
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
