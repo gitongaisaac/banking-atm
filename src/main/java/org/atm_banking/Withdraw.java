@@ -9,11 +9,9 @@ public class Withdraw extends Requests {
 
     String ref, trans_date, trans_time, ssn, trans_party;
 
+    double trans_amt, trans_bal;   // Transaction_amount;
+
     int account_no;
-
-    double trans_amt;   // Transaction_amount;
-
-    double trans_bal;   // Transaction_balance
 
     public Withdraw() {
         REFGenerator refGenerator = new REFGenerator();
