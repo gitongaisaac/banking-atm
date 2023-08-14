@@ -50,10 +50,4 @@ public class REFGenerator {
 
         return ref.toString();
     }
-
-//    public static void main(String[] args) {
-//        REFGenerator REFGenerator = new REFGenerator();
-//        String ref = REFGenerator.RefGenerator();
-//        System.out.println(ref);
-//    }
 }

@@ -2,6 +2,9 @@ package org.atm_banking;
 
 import org.db_banking.Requests;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Transaction extends Requests {
     String trans_name, trans_ref, trans_date, trans_time, ssn, trans_party;
 
@@ -23,7 +26,9 @@ public class Transaction extends Requests {
         this.ssn = ssn;
     }
 
-    public void transDate() {}
+    public void transDate() {
+
+    }
 
     public void transTime() {}
 

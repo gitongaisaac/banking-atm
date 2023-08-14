@@ -147,24 +147,11 @@ public class Requests extends DbConnections {
         String query = """
                 INSERT INTO Account_info (REF, trans_name, trans_amt, trans_bal, trans_date, trans_time, trans_party
                 account_no, SSN)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)` \s
                 """;
 
         Requests requests = new Requests();
         requests.postTransactionInfo(query, trans_ref, trans_name, trans_amt, trans_bal, trans_date, trans_time,
                 trans_party, account_no, ssn);
     }
-
-
-//    public static void main(String[] args) {
-//        Requests fetchDetails = new Requests();
-//        int account = fetchDetails.getAccountNo();
-//        System.out.println(account);
-//
-//        fetchDetails.setAccountNo(123456789);
-//        Requests fetchDetails1 = new Requests();
-//        int account2 = fetchDetails.getAccountNo();
-//        System.out.println("From get account " + account2);
-//    }
-
 }
