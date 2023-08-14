@@ -5,10 +5,29 @@ import org.db_banking.Requests;
 import java.util.Scanner;
 
 public class Withdraw extends Requests {
-    double amt;
+    String trans_name = "Withdraw"; // Transaction_name
 
-    public double getAmt() {
-        return this.amt;
+    String ref, trans_date, trans_time, ssn, trans_party;
+
+    int account_no;
+
+    double trans_amt;   // Transaction_amount;
+
+    double trans_bal;   // Transaction_balance
+
+    public Withdraw() {
+        REFGenerator refGenerator = new REFGenerator();
+        Withdraw withdraw = new Withdraw();
+
+        this.ref = refGenerator.refGenerator();
+
+        this.ssn = withdraw.fetchSSN(account_no);
+
+        this.trans_party = this.ssn;
+    }
+
+    public double getTransAmt() {
+        return this.trans_amt;
     }
 
     public static double enterAmt() {
@@ -21,15 +40,17 @@ public class Withdraw extends Requests {
     }
 
     public void withdraw (int account_no) {
+        this.account_no = account_no;
+
         Withdraw withdraw = new Withdraw();
 
-        this.amt = enterAmt();
-        double balance = withdraw.fetchAccountBalance(account_no);
-        System.out.println("Account Balance: $" + balance);
+        this.trans_amt = enterAmt();
+        this.trans_bal = withdraw.fetchAccountBalance(account_no);
+        System.out.println("Account Balance: $" + this.trans_bal);
 
-        withdraw.withdrawBalance(account_no, amt);
+        withdraw.withdrawBalance(account_no, this.trans_amt);
 
-        balance = withdraw.fetchAccountBalance(account_no);
-        System.out.println("New account balance: $" + balance);
+        this.trans_bal = withdraw.fetchAccountBalance(account_no);
+        System.out.println("New account balance: $" + this.trans_bal);
     }
 }

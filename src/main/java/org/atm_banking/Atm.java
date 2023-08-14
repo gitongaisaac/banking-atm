@@ -89,14 +89,14 @@ public class Atm extends Requests {
             }
             case 2 -> {
                 Deposit deposit = new Deposit();
-                this.amt = deposit.getAmt();
+                this.amt = deposit.getTransAmt();
                 deposit.deposit(this.account_no);
                 this.activity();
                 this.switchActivity();
             }
             case 3 -> {
                 Withdraw withdraw = new Withdraw();
-                this.amt = withdraw.getAmt();
+                this.amt = withdraw.getTransAmt();
                 withdraw.withdraw(this.account_no);
                 this.activity();
                 this.switchActivity();

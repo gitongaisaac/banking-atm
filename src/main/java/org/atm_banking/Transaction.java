@@ -9,6 +9,7 @@ public class Transaction extends Requests {
         REFGenerator refGenerator = new REFGenerator();
         return refGenerator.refGenerator();
     }
+
     public void createEntry() {
 
     }

@@ -6,10 +6,29 @@ import java.util.Scanner;
 
 /* Deposit class. Takes care of transactions concerning depositing of cash. Has one method deposit() */
 public class Deposit extends Requests {
-    double amt;
+    final String trans_name = "Deposit";  // Transaction_name
 
-    public double getAmt() {
-        return this.amt;
+    String ref, trans_date, trans_time, ssn, trans_party;
+
+    int account_no;
+
+    double trans_amt;   // Transaction_amount;
+
+    double trans_bal;   // Transaction_balance
+
+    public Deposit() {
+        REFGenerator refGenerator = new REFGenerator();
+        Deposit deposit = new Deposit();
+
+        this.ref = refGenerator.refGenerator();
+
+        this.ssn = deposit.fetchSSN(this.account_no);
+
+        this.trans_party = this.ssn;
+    }
+
+    public double getTransAmt() {
+        return this.trans_amt;
     }
 
     public static double enterAmt() {
@@ -23,15 +42,17 @@ public class Deposit extends Requests {
 
     /* Total amount in the account */
     public void deposit(int account_no) {
+        this.account_no = account_no;
+
         Deposit deposit = new Deposit();
-        this.amt = enterAmt();
+        this.trans_amt = enterAmt();
 
-        double balance = deposit.fetchAccountBalance(account_no);
-        System.out.println("Account Balance: $" + balance);
+        this.trans_bal = deposit.fetchAccountBalance(account_no);
+        System.out.println("Account Balance: $" + this.trans_bal);
 
-        deposit.depositBalance(account_no, amt);
+        deposit.depositBalance(account_no, this.trans_amt);
 
-        balance = deposit.fetchAccountBalance(account_no);
-        System.out.println("\nNew Account Balance: $" + balance);
+        this.trans_bal = deposit.fetchAccountBalance(account_no);
+        System.out.println("\nNew Account Balance: $" + this.trans_bal);
     }
 }
