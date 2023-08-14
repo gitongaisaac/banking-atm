@@ -43,5 +43,8 @@ public class Withdraw extends Requests {
 
         this.trans_bal = withdraw.fetchAccountBalance(this.account_no);
         System.out.println("New account balance: $" + this.trans_bal);
+
+        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party, this.account_no, this.ssn);
+        transaction.addTransaction();
     }
 }

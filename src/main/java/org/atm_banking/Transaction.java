@@ -26,8 +26,8 @@ public class Transaction extends Requests {
 
     public void transTime() {}
 
-    public void createEntry() {
+    public void addTransaction() {
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party, this.account_no, this.ssn);
-        transaction.addTransaction(this.trans_ref, this.trans_name, this.trans_amt, this.trans_bal, this.trans_date, this.trans_time, this.trans_party, this.account_no, this.ssn);
+        transaction.createTransaction(this.trans_ref, this.trans_name, this.trans_amt, this.trans_bal, this.trans_date, this.trans_time, this.trans_party, this.account_no, this.ssn);
     }
 }
