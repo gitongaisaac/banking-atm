@@ -17,9 +17,7 @@ public class Withdraw extends Requests {
     public Withdraw(int account_no) {
         this.account_no = account_no;
 
-        Withdraw withdraw = new Withdraw(this.account_no);
-
-        this.ssn = withdraw.fetchSSN(this.account_no);
+        this.ssn = this.fetchSSN(this.account_no);
 
         this.trans_party = this.ssn;
     }

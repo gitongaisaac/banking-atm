@@ -18,9 +18,7 @@ public class Deposit extends Requests {
     public Deposit(int account_no) {
         this.account_no = account_no;
 
-        Deposit deposit = new Deposit(this.account_no);
-
-        this.ssn = deposit.fetchSSN(this.account_no);
+        this.ssn = this.fetchSSN(this.account_no);
 
         this.trans_party = this.ssn;
     }

@@ -6,7 +6,7 @@ package org.db_banking;
 public class Requests extends DbConnections {
     double account_balance;
 
-    String ssn, account_type, last_name, first_name, phone_no, trans_party;
+    String ssn, account_type, last_name, first_name, phone_no;
 
     /* Fetch the said account pin and return it */
     public int fetchAccountPin(int account_no) {
