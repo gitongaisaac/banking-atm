@@ -8,25 +8,20 @@ import java.util.Scanner;
 public class Deposit extends Requests {
     final String trans_name = "Deposit";  // Transaction_name
 
-    String ref, trans_date, trans_time, ssn, trans_party;
+    String ssn, trans_party;
 
     double trans_amt, trans_bal;   // Transaction_amount;
 
     int account_no;
 
-    public Deposit() {
-        REFGenerator refGenerator = new REFGenerator();
-        Deposit deposit = new Deposit();
+    public Deposit(int account_no) {
+        this.account_no = account_no;
 
-        this.ref = refGenerator.refGenerator();
+        Deposit deposit = new Deposit(this.account_no);
 
         this.ssn = deposit.fetchSSN(this.account_no);
 
         this.trans_party = this.ssn;
-    }
-
-    public double getTransAmt() {
-        return this.trans_amt;
     }
 
     public static double enterAmt() {
@@ -39,18 +34,16 @@ public class Deposit extends Requests {
     }
 
     /* Total amount in the account */
-    public void deposit(int account_no) {
-        this.account_no = account_no;
-
-        Deposit deposit = new Deposit();
+    public void deposit() {
+        Deposit deposit = new Deposit(this.account_no);
         this.trans_amt = enterAmt();
 
-        this.trans_bal = deposit.fetchAccountBalance(account_no);
+        this.trans_bal = deposit.fetchAccountBalance(this.account_no);
         System.out.println("Account Balance: $" + this.trans_bal);
 
-        deposit.depositBalance(account_no, this.trans_amt);
+        deposit.depositBalance(this.account_no, this.trans_amt);
 
-        this.trans_bal = deposit.fetchAccountBalance(account_no);
+        this.trans_bal = deposit.fetchAccountBalance(this.account_no);
         System.out.println("\nNew Account Balance: $" + this.trans_bal);
     }
 }
