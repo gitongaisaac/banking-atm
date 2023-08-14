@@ -5,11 +5,12 @@ import org.db_banking.Requests;
 import java.util.Scanner;
 
 public class Withdraw extends Requests {
-    String trans_name = "Withdraw"; // Transaction_name
+// trans = transaction, amt = amount, bal = balance
+    String trans_name = "Withdraw";
 
     String ssn, trans_party;
 
-    double trans_amt, trans_bal;   // Transaction_amount;
+    double trans_amt, trans_bal;
 
     int account_no;
 
@@ -44,7 +45,8 @@ public class Withdraw extends Requests {
         this.trans_bal = withdraw.fetchAccountBalance(this.account_no);
         System.out.println("New account balance: $" + this.trans_bal);
 
-        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party, this.account_no, this.ssn);
+        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
+                this.account_no, this.ssn);
         transaction.addTransaction();
     }
 }
