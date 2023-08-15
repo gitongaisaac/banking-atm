@@ -1,7 +1,12 @@
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Test2 {
     public void localDate() {
@@ -15,17 +20,14 @@ public class Test2 {
     }
 
     public void date() {
-        LocalDateTime date = LocalDateTime.now();
-//        System.out.println("Before formatting: " + date);
+        Date currentDate = new Date();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-        DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
-        DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 
-        String formattedTime = date.format(timeFormatted);
-        String formattedDate = date.format(dateFormatted);
-
-        System.out.println("After formatting: " + formattedDate);
-        System.out.println("After formatting: " + formattedTime);
+        System.out.println(time.format(timestamp));
+        System.out.println(date.format(timestamp));
     }
 
     public static void main(String[] args) {
