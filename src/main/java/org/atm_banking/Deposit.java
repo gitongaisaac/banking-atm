@@ -18,7 +18,7 @@ public class Deposit extends Requests {
     public Deposit(int account_no) {
         this.account_no = account_no;
 
-        this.ssn = this.fetchSSN(this.account_no);
+        this.ssn = fetchSSN(this.account_no);
 
         this.trans_party = this.ssn;
     }
@@ -37,13 +37,9 @@ public class Deposit extends Requests {
         Deposit deposit = new Deposit(this.account_no);
         this.trans_amt = enterAmt();
 
-        this.trans_bal = deposit.fetchAccountBalance(this.account_no);
-        System.out.println("Account Balance: $" + this.trans_bal);
-
         deposit.depositBalance(this.account_no, this.trans_amt);
 
         this.trans_bal = deposit.fetchAccountBalance(this.account_no);
-        System.out.println("\nNew Account Balance: $" + this.trans_bal);
 
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
                 this.account_no, this.ssn);

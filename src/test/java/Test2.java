@@ -16,12 +16,16 @@ public class Test2 {
 
     public void date() {
         LocalDateTime date = LocalDateTime.now();
-        System.out.println("Before formatting: " + date);
+//        System.out.println("Before formatting: " + date);
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        String formattedDate = date.format(dateTimeFormatter);
+        String formattedTime = date.format(timeFormatted);
+        String formattedDate = date.format(dateFormatted);
+
         System.out.println("After formatting: " + formattedDate);
+        System.out.println("After formatting: " + formattedTime);
     }
 
     public static void main(String[] args) {

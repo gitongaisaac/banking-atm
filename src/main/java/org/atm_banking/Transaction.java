@@ -29,7 +29,7 @@ public class Transaction extends Requests {
         LocalDateTime localDateTime = LocalDateTime.now();
 
         DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
-        this.trans_time =localDateTime.format(timeFormatted);
+        this.trans_time = localDateTime.format(timeFormatted);
 
         DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.trans_date = localDateTime.format(dateFormatted);

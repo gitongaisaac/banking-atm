@@ -206,8 +206,8 @@ abstract class DbConnections {
         }
     }
 
-    protected void postTransactionInfo(String query, String ref, String trans_name, double trans_amt, double trans_bal, String date,
-                                       String time, String trans_party, int account_no, String ssn) {
+    protected void postTransactionInfo(String query, String ref, String trans_name, double trans_amt, double trans_bal,
+                                       String date, String time, String trans_party, int account_no, String ssn) {
         try {
             Class.forName(jdbcDriver);
 

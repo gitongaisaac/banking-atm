@@ -17,7 +17,7 @@ public class Withdraw extends Requests {
     public Withdraw(int account_no) {
         this.account_no = account_no;
 
-        this.ssn = this.fetchSSN(this.account_no);
+        this.ssn = fetchSSN(this.account_no);
 
         this.trans_party = this.ssn;
     }
@@ -35,13 +35,10 @@ public class Withdraw extends Requests {
         Withdraw withdraw = new Withdraw(this.account_no);
 
         this.trans_amt = enterAmt();
-        this.trans_bal = withdraw.fetchAccountBalance(this.account_no);
-        System.out.println("Account Balance: $" + this.trans_bal);
 
         withdraw.withdrawBalance(this.account_no, this.trans_amt);
 
         this.trans_bal = withdraw.fetchAccountBalance(this.account_no);
-        System.out.println("New account balance: $" + this.trans_bal);
 
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
                 this.account_no, this.ssn);
