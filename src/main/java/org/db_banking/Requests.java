@@ -1,5 +1,9 @@
 package org.db_banking;
 
+import javax.xml.crypto.Data;
+import java.sql.Date;
+import java.sql.Time;
+
 /* Class Requests. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
  * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
  * from the DbParamAccessors class. */
@@ -133,10 +137,9 @@ public abstract class Requests extends DbConnections {
     }
 
     public void createTransaction(String trans_ref, String trans_name, double trans_amt, double trans_bal,
-                                  String trans_date, String trans_time, String trans_party, int account_no, String ssn) {
+                                  Date trans_date, Time trans_time, String trans_party, int account_no, String ssn) {
         String query = """
-                INSERT INTO Account_info (REF, trans_name, trans_amt, trans_bal, trans_date, trans_time, trans_party
-                account_no, SSN)
+                INSERT INTO Account_info
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
 

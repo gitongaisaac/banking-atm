@@ -1,15 +1,22 @@
 package org.atm_banking;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import org.db_banking.Requests;
 
 
 public class Transaction extends Requests {
-    String trans_name, trans_ref, trans_date, trans_time, ssn, trans_party;
+    String trans_name, trans_ref, ssn, trans_party;
+
+    Date trans_date;
+
+    Time trans_time;
 
     double trans_amt, trans_bal;   // Transaction_amount;
 
@@ -28,13 +35,18 @@ public class Transaction extends Requests {
         this.account_no = account_no;
         this.ssn = ssn;
 
-        LocalDateTime localDateTime = LocalDateTime.now();
+//        LocalDateTime localDateTime = LocalDateTime.now();
+//
+//        DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        this.trans_time = localDateTime.format(timeFormatted);
+//
+//        DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        this.trans_date = localDateTime.format(dateFormatted);
 
-        DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
-        this.trans_time = localDateTime.format(timeFormatted);
+        this.trans_date = new Date(Calendar.getInstance().getTime().getTime());
 
-        DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        this.trans_date = localDateTime.format(dateFormatted);
+        // Set event time
+        this.trans_time = new Time(Calendar.getInstance().getTime().getTime());
     }
 
     public void addTransaction() {

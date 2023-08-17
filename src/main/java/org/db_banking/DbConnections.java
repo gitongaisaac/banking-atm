@@ -208,7 +208,7 @@ abstract class DbConnections {
     }
 
     protected void postTransactionInfo(String query, String ref, String trans_name, double trans_amt, double trans_bal,
-                                       String date, String time, String trans_party, int account_no, String ssn) {
+                                       Date date, Time time, String trans_party, int account_no, String ssn) {
         try {
             Class.forName(jdbcDriver);
 
@@ -219,16 +219,19 @@ abstract class DbConnections {
             // Set event time
             Time currentTime = new Time(Calendar.getInstance().getTime().getTime());
 
+            System.out.println(currentDate + " and " + currentTime);
 
             statement = connection.prepareStatement(query);
             statement.setString(1, ref);
             statement.setString(2, trans_name);
             statement.setDouble(3, trans_amt);
             statement.setDouble(4, trans_bal);
-            statement.setDate(5, currentDate);
+//            statement.setDate(5, currentDate);
 //            statement.setString(5, date);
-            statement.setTime(6, currentTime);
+            statement.setDate(5, date);
+//            statement.setTime(6, currentTime);
 //            statement.setString(6, time);
+            statement.setTime(6, time);
             statement.setString(7, trans_party);
             statement.setInt(8, account_no);
             statement.setString(9, ssn);
