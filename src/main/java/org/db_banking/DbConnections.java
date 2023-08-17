@@ -1,6 +1,7 @@
 package org.db_banking;
 
 import java.sql.*;
+import java.util.Calendar;
 
 abstract class DbConnections {
     /* JDBC MySQL Driver*/
@@ -213,16 +214,25 @@ abstract class DbConnections {
 
             connection = DriverManager.getConnection(this.url, this.username, this.password);
 
+            Date currentDate = new Date(Calendar.getInstance().getTime().getTime());
+
+            // Set event time
+            Time currentTime = new Time(Calendar.getInstance().getTime().getTime());
+
+
             statement = connection.prepareStatement(query);
             statement.setString(1, ref);
             statement.setString(2, trans_name);
             statement.setDouble(3, trans_amt);
             statement.setDouble(4, trans_bal);
-            statement.setString(5, date);
-            statement.setString(6, time);
+            statement.setDate(5, currentDate);
+//            statement.setString(5, date);
+            statement.setTime(6, currentTime);
+//            statement.setString(6, time);
             statement.setString(7, trans_party);
             statement.setInt(8, account_no);
             statement.setString(9, ssn);
+
 
             statement.executeUpdate();
 

@@ -44,8 +44,7 @@ public class Atm extends Requests {
         this.account_no = scanner.nextInt();
 
         // Requests to fetch the account pin
-        Requests requests = new Requests();
-        int enteredPinNo = requests.fetchAccountPin(this.account_no);
+        int enteredPinNo = fetchAccountPin(this.account_no);
 
         // PIn (User input)
         System.out.print("Pin number: ");

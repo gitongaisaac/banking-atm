@@ -40,7 +40,7 @@ public class Withdraw extends Requests {
 
         this.trans_bal = withdraw.fetchAccountBalance(this.account_no);
 
-        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
+        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.ssn,
                 this.account_no, this.ssn);
         transaction.addTransaction();
     }

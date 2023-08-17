@@ -3,7 +3,7 @@ package org.db_banking;
 /* Class Requests. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
  * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
  * from the DbParamAccessors class. */
-public class Requests extends DbConnections {
+public abstract class Requests extends DbConnections {
     double account_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
@@ -17,9 +17,8 @@ public class Requests extends DbConnections {
         String label = "account_pin";
 
         /* Requests object */
-        Requests requests = new Requests();
-//        account_pin = requests.dbIntegerAccessor(query, account_no, label);
-        account_pin = requests.dbIntConnection(query, account_no, label);
+//        account_pin = dbIntegerAccessor(query, account_no, label);
+        account_pin = dbIntConnection(query, account_no, label);
 
         return account_pin;
     }
@@ -29,10 +28,9 @@ public class Requests extends DbConnections {
         String query = "SELECT account_no FROM Account_info WHERE account_pin = ?";
         String label = "account_no";
 
-        Requests requests = new Requests();
 //        int account_no = requests.dbIntConnection(query, pin, label);
 
-        return requests.dbIntConnection(query, pin, label);
+        return dbIntConnection(query, pin, label);
     }
 
     /* Fetch said Account Balance and return it */
@@ -40,8 +38,7 @@ public class Requests extends DbConnections {
         String query = "SELECT total_balance FROM Account_info WHERE account_no = ?";
         String label = "total_balance";
 
-        Requests requests = new Requests();
-        this.account_balance = requests.dbDoubleConnection(query, account_no, label);
+        this.account_balance = dbDoubleConnection(query, account_no, label);
 
         return this.account_balance;
     }
@@ -51,8 +48,7 @@ public class Requests extends DbConnections {
         String query = "SELECT SSN FROM Account_info WHERE account_no = ?";
         String label = "SSN";
 
-        Requests requests = new Requests();
-        this.ssn = requests.dbStringConnection(query, account_no, label);
+        this.ssn = dbStringConnection(query, account_no, label);
 
         return this.ssn;
     }
@@ -62,8 +58,7 @@ public class Requests extends DbConnections {
         String query = "SELECT account_type FROM Account_info WHERE account_no = ?";
         String label = "account_type";
 
-        Requests requests = new Requests();
-        this.account_type = requests.dbStringConnection(query, account_no, label);
+        this.account_type = dbStringConnection(query, account_no, label);
 
         return this.account_type;
     }
@@ -78,8 +73,7 @@ public class Requests extends DbConnections {
         condition = ssn;
         label = "last_name";
 
-        Requests requests = new Requests();
-        this.last_name = requests.dbStringConnection(query, condition, label);
+        this.last_name = dbStringConnection(query, condition, label);
 
         return this.last_name;
     }
@@ -94,8 +88,7 @@ public class Requests extends DbConnections {
         condition = ssn;
         label = "first_name";
 
-        Requests requests = new Requests();
-        this.first_name = requests.dbStringConnection(query, condition,label);
+        this.first_name = dbStringConnection(query, condition,label);
 
         return this.first_name;
     }
@@ -110,8 +103,7 @@ public class Requests extends DbConnections {
 
         String ssn = this.fetchSSN(account_no);
 
-        Requests requests = new Requests();
-        this.phone_no = requests.dbStringConnection(query, condition, label);
+        this.phone_no = dbStringConnection(query, condition, label);
 
         return this.phone_no;
     }
@@ -127,8 +119,7 @@ public class Requests extends DbConnections {
                 WHERE account_no = ?
                 """;
 
-        Requests requests = new Requests();
-        requests.postDbDoubleConnection(query, account_no, amt);
+        postDbDoubleConnection(query, account_no, amt);
     }
 
     public void withdrawBalance(int account_no, double amt) {
@@ -138,8 +129,7 @@ public class Requests extends DbConnections {
                 WHERE account_no = ?
                 """;
 
-        Requests requests = new Requests();
-        requests.postDbDoubleConnection(query, account_no, amt);
+        postDbDoubleConnection(query, account_no, amt);
     }
 
     public void createTransaction(String trans_ref, String trans_name, double trans_amt, double trans_bal,
@@ -150,15 +140,7 @@ public class Requests extends DbConnections {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
 
-        Requests requests = new Requests();
-        requests.postTransactionInfo(query, trans_ref, trans_name, trans_amt, trans_bal, trans_date, trans_time,
+        postTransactionInfo(query, trans_ref, trans_name, trans_amt, trans_bal, trans_date, trans_time,
                 trans_party, account_no, ssn);
-    }
-
-    public static void main(String[] args) {
-        Requests requests = new Requests();
-        requests.createTransaction("902JCHS90S", "Withdraw", 1000, 12000,
-                "2023-02-30", "09:00:00", "145-63-9865", 123456789,
-                "145-63-9865");
     }
 }
