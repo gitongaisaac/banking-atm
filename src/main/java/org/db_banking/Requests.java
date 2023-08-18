@@ -140,7 +140,7 @@ public abstract class Requests extends DbConnections {
                                   Date trans_date, Time trans_time, String trans_party, int account_no, String ssn) {
         String query = """
                 INSERT INTO Account_info
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                 """;
 
         postTransactionInfo(query, trans_ref, trans_name, trans_amt, trans_bal, trans_date, trans_time,

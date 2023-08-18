@@ -42,6 +42,7 @@ public class Withdraw extends Requests {
 
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.ssn,
                 this.account_no, this.ssn);
+
         transaction.addTransaction();
     }
 }

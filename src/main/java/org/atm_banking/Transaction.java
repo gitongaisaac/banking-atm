@@ -24,9 +24,6 @@ public class Transaction extends Requests {
 
     public Transaction(String trans_name, double trans_amt, double trans_bal, String trans_party, int account_no,
                        String ssn) {
-        REFGenerator refGenerator = new REFGenerator();
-
-        this.trans_ref = refGenerator.refGenerator();
 
         this.trans_name = trans_name;
         this.trans_amt = trans_amt;
@@ -50,6 +47,12 @@ public class Transaction extends Requests {
     }
 
     public void addTransaction() {
+        REFGenerator refGenerator = new REFGenerator();
+
+        this.trans_ref = refGenerator.refGenerator();
+
+        System.out.println(this.trans_ref);
+
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
                 this.account_no, this.ssn);
 
