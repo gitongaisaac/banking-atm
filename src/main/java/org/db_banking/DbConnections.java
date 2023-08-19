@@ -1,7 +1,6 @@
 package org.db_banking;
 
 import java.sql.*;
-import java.util.Calendar;
 
 abstract class DbConnections {
     /* JDBC MySQL Driver*/
