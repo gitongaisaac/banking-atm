@@ -28,14 +28,6 @@ public class Transaction extends Requests {
         this.account_no = account_no;
         this.ssn = ssn;
 
-//        LocalDateTime localDateTime = LocalDateTime.now();
-//
-//        DateTimeFormatter timeFormatted = DateTimeFormatter.ofPattern("HH:mm:ss");
-//        this.trans_time = localDateTime.format(timeFormatted);
-//
-//        DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        this.trans_date = localDateTime.format(dateFormatted);
-
         this.trans_date = new Date(Calendar.getInstance().getTime().getTime());
 
         // Set event time
@@ -46,8 +38,6 @@ public class Transaction extends Requests {
         REFGenerator refGenerator = new REFGenerator();
 
         this.trans_ref = refGenerator.refGenerator();
-
-        System.out.println(this.trans_ref);
 
         Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
                 this.account_no, this.ssn);

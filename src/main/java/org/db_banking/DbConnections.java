@@ -224,7 +224,6 @@ abstract class DbConnections {
             statement.setInt(8, account_no);
             statement.setString(9, ssn);
 
-
             statement.executeUpdate();
 
             connection.close();

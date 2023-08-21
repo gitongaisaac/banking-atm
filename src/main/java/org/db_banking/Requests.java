@@ -137,8 +137,16 @@ public abstract class Requests extends DbConnections {
 
     public void createTransaction(String trans_ref, String trans_name, double trans_amt, double trans_bal,
                                   Date trans_date, Time trans_time, String trans_party, int account_no, String ssn) {
+//        String query = """
+//                INSERT INTO Account_info (REF, trans_name, trans_amt, trans_bal, trans_date, trans_time, trans_party,
+//                        account_no, SSN)
+//                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+//                """;
+
         String query = """
-                INSERT INTO Account_info
+                INSERT INTO `atm_banking`.`Trans_info`
+                (`REF`, `trans_name`, `trans_amt`, `trans_bal`, `trans_date`, `trans_time`, `trans_party`, `account_no`,
+                    `SSN`)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                 """;
 
