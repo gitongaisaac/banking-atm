@@ -97,7 +97,8 @@ public class Atm extends Requests {
                 this.switchActivity();
             }
             case 4 -> {
-                Transfer.transfer();
+                Transfer transfer = new Transfer(this.account_no);
+                transfer.transfer();
                 this.activity();
                 this.switchActivity();
             }

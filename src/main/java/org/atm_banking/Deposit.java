@@ -9,18 +9,18 @@ public class Deposit extends Requests {
     // trans = transaction, amt = amount, bal = balance
     final String trans_name = "Deposit";
 
-    String ssn, trans_party;
+    String ssn;
 
     double trans_amt, trans_bal;
 
-    int account_no;
+    int account_no, trans_party;
 
     public Deposit(int account_no) {
         this.account_no = account_no;
 
         this.ssn = fetchSSN(this.account_no);
 
-        this.trans_party = this.ssn;
+        this.trans_party = this.account_no;
     }
 
     public static double enterAmt() {

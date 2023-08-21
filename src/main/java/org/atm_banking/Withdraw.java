@@ -6,20 +6,20 @@ import java.util.Scanner;
 
 public class Withdraw extends Requests {
 // trans = transaction, amt = amount, bal = balance
-    String trans_name = "Withdraw";
+    final String trans_name = "Withdraw";
 
-    String ssn, trans_party;
+    String ssn;
 
     double trans_amt, trans_bal;
 
-    int account_no;
+    int account_no, trans_party;
 
     public Withdraw(int account_no) {
         this.account_no = account_no;
 
         this.ssn = fetchSSN(this.account_no);
 
-        this.trans_party = this.ssn;
+        this.trans_party = this.account_no;
     }
 
     public static double enterAmt() {
@@ -40,7 +40,7 @@ public class Withdraw extends Requests {
 
         this.trans_bal = withdraw.fetchAccountBalance(this.account_no);
 
-        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.ssn,
+        Transaction transaction = new Transaction(this.trans_name, this.trans_amt, this.trans_bal, this.trans_party,
                 this.account_no, this.ssn);
 
         transaction.addTransaction();

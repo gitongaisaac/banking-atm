@@ -8,7 +8,7 @@ import org.db_banking.Requests;
 
 
 public class Transaction extends Requests {
-    String trans_name, trans_ref, ssn, trans_party;
+    String trans_name, trans_ref, ssn;
 
     Date trans_date;
 
@@ -16,9 +16,9 @@ public class Transaction extends Requests {
 
     double trans_amt, trans_bal;   // Transaction_amount;
 
-    int account_no;
+    int account_no, trans_party;
 
-    public Transaction(String trans_name, double trans_amt, double trans_bal, String trans_party, int account_no,
+    public Transaction(String trans_name, double trans_amt, double trans_bal, int trans_party, int account_no,
                        String ssn) {
 
         this.trans_name = trans_name;

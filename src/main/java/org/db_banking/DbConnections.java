@@ -207,7 +207,7 @@ abstract class DbConnections {
     }
 
     protected void postTransactionInfo(String query, String ref, String trans_name, double trans_amt, double trans_bal,
-                                       Date date, Time time, String trans_party, int account_no, String ssn) {
+                                       Date date, Time time, int trans_party, int account_no, String ssn) {
         try {
             Class.forName(jdbcDriver);
 
@@ -220,7 +220,7 @@ abstract class DbConnections {
             statement.setDouble(4, trans_bal);
             statement.setDate(5, date);
             statement.setTime(6, time);
-            statement.setString(7, trans_party);
+            statement.setInt(7, trans_party);
             statement.setInt(8, account_no);
             statement.setString(9, ssn);
 
