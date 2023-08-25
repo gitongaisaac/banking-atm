@@ -28,6 +28,7 @@ public class Transaction extends Requests {
         this.account_no = account_no;
         this.ssn = ssn;
 
+        // Set event date
         this.trans_date = new Date(Calendar.getInstance().getTime().getTime());
 
         // Set event time
