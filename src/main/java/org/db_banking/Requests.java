@@ -3,19 +3,14 @@ package org.db_banking;
 import java.sql.Date;
 import java.sql.Time;
 
-/* Class Requests. Contains 8 methods each for fetching basic user details i.e.  account_no, account_pin,
- * account_balance, social security number, account_type, last_name, first_name, and phone_no. It inherits attributes
- * from the DbParamAccessors class. */
 public abstract class Requests extends DbConnections {
     double account_balance;
 
     String ssn, account_type, last_name, first_name, phone_no;
 
-    /* Fetch the said account pin and return it */
     public int fetchAccountPin(int account_no) {
         int account_pin;
 
-        /* Fetch the account_pin which corresponds to the account_no entered. */
         String query = "SELECT account_pin FROM Account_info WHERE account_no = ?";
         String label = "account_pin";
 
@@ -36,7 +31,6 @@ public abstract class Requests extends DbConnections {
         return dbIntConnection(query, pin, label);
     }
 
-    /* Fetch said Account Balance and return it */
     public double fetchAccountBalance(int account_no) {
         String query = "SELECT total_balance FROM Account_info WHERE account_no = ?";
         String label = "total_balance";
@@ -46,7 +40,6 @@ public abstract class Requests extends DbConnections {
         return this.account_balance;
     }
 
-    /* Fetch social security number and return it */
     public   String fetchSSN(int account_no) {
         String query = "SELECT SSN FROM Account_info WHERE account_no = ?";
         String label = "SSN";
@@ -56,7 +49,6 @@ public abstract class Requests extends DbConnections {
         return this.ssn;
     }
 
-    /* Fetch Account Type and return it */
     public String fetchAccountType(int account_no) {
         String query = "SELECT account_type FROM Account_info WHERE account_no = ?";
         String label = "account_type";
@@ -66,7 +58,6 @@ public abstract class Requests extends DbConnections {
         return this.account_type;
     }
 
-    /* Fetch Last Name and return it. Uses the fetchSSN method */
     public String fetchLastName(int account_no) {
         String query, condition, label;
 
@@ -81,7 +72,6 @@ public abstract class Requests extends DbConnections {
         return this.last_name;
     }
 
-    /* Fetch First Name and return it. Uses the fetchSSN method */
     public String fetchFirstName(int account_no) {
         String query, condition, label;
 

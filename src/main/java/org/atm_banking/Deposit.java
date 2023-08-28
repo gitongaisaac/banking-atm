@@ -4,7 +4,6 @@ import org.db_banking.Requests;
 
 import java.util.Scanner;
 
-/* Deposit class. Takes care of transactions concerning depositing of cash. Has one method deposit() */
 public class Deposit extends Requests {
     // trans = transaction, amt = amount, bal = balance
     final String trans_name = "Deposit";
@@ -32,7 +31,6 @@ public class Deposit extends Requests {
         return scanner.nextDouble();
     }
 
-    /* Total amount in the account */
     public void deposit() {
         Deposit deposit = new Deposit(this.account_no);
         this.trans_amt = enterAmt();

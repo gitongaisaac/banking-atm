@@ -5,9 +5,6 @@ import org.db_banking.Requests;
 
 import java.util.Scanner;
 
-/* This is the main class and contains the main method. Has 4 methods: activity(), signIn(), switchActivity(), and
- * getAccountNo(). It extends the fetchDetails() class to use its methods to fetch basic user details such as
- * account_pin */
 public class Atm extends Requests {
     private int account_no;
 
@@ -34,8 +31,6 @@ public class Atm extends Requests {
         System.out.println(activity);
     }
 
-    /* Takes care of the validation. It allows the user to enter their account number and the pin and the
-     * system validates these credentials. If the credentials are correct. The user can access the account. */
     public void signIn() {
         Scanner scanner = new Scanner(System.in);
 
