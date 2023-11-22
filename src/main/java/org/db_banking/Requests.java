@@ -3,6 +3,7 @@ package org.db_banking;
 import java.sql.Date;
 import java.sql.Time;
 
+/* This is a private abstract class. */
 public abstract class Requests extends DbConnections {
     double account_balance;
 

@@ -2,6 +2,12 @@ package org.db_banking;
 
 import java.sql.*;
 
+/* Connect with database. Each method has a different return type or different number of parameters or parameters have
+* different data types. This helps in fetching different values e.g. amount which is a double, account number
+* which is an integer... etc. Also at the bottom, the methods are for updating certain values in the database.
+* The methods have no return types because they do not return any values.
+*
+* These class is abstract and cannot be inherited by classes outside this package. This is to increase data privacy. */
 abstract class DbConnections {
     /* JDBC MySQL Driver*/
     private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
@@ -16,11 +22,15 @@ abstract class DbConnections {
     /* Database connection password */
     private final String password = "D3F 15@@c 53rv3r";
 
-    /* *********************************************************************************************************** */
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;
 
+    /* In this method the condition is an integer and returns a data type of integer. This method will fetch queries
+    * where the value being returned is an integer e.g. account number and the condition is an integer e.g. fetching an
+    * account number when the pin number is known: In this case the account number is an integer(return type) and the
+    * pin number is an integer(condition). Also accepts a query and a label, the query is an sql query and the label is
+    * the column name */
     protected int dbIntConnection(String query, int condition, String label) {
     int result = 0;
 
@@ -50,6 +60,7 @@ abstract class DbConnections {
         return result;
     }
 
+    /* Same as the first method, but in this case the return type is a double and the condition is a double. */
     protected double dbDoubleConnection(String query, double condition, String label) {
         double result = 0;
 
@@ -78,6 +89,7 @@ abstract class DbConnections {
         return result;
     }
 
+    /* Return type: String.  Condition: String. e.g. getting the ssn given the state */
     protected String dbStringConnection(String query, String condition, String label) {
         String result = null;
 
@@ -106,6 +118,7 @@ abstract class DbConnections {
         return result;
     }
 
+    /* Return type: String. Condition: integer.  */
     protected String dbStringConnection(String query, int condition, String label) {
         String result = null;
 
@@ -164,8 +177,12 @@ abstract class DbConnections {
 
 /*
  * UPDATE CONNECTIONS
+ * This are methods that update the database. They do not need a return type, just conditions. One condition sets a new
+ * value for a specific account number
 */
 
+    /* This method will update the database where one condition is an integer and the other is a double. e.g. setting
+    * a new account balance for a certain account number */
     public void postDbDoubleConnection(String query, int condition1, double condition2) {
         try {
             Class.forName(jdbcDriver);
@@ -186,6 +203,7 @@ abstract class DbConnections {
         }
     }
 
+    /* Condition one: integer, Condition two: String. e.g. setting a new pin for a specific ssn*/
     public void postDbStringConnection(String query, int condition1, String condition2) {
         try {
             Class.forName(jdbcDriver);
@@ -206,6 +224,7 @@ abstract class DbConnections {
         }
     }
 
+    /* This method is for adding a new transaction on the transaction table. It takes parameters for all the columns */
     protected void postTransactionInfo(String query, String ref, String trans_name, double trans_amt, double trans_bal,
                                        Date date, Time time, int trans_party, int account_no, String ssn) {
         try {
